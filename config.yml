@@ -11,28 +11,32 @@ taxonomies:
 
 menu:
     main:
-        - name: Experience
-          url: Experience/
+        - name: Education
+          url: /education/
           weight: 1
-        - name: Courses
-          url: courses/
+        - name: Experience
+          url: /experience/
           weight: 2
-        - name: Data
-          url: data/
-          weight: 3 
-        - name: Newsletter
-          url: https://pmichaillat.substack.com
+        - name: Projects
+          url: /projects/
+          weight: 3
+        - name: Blog
+          url: /blog/
           weight: 4
+        - name: tags
+          url: /tags/
+          weight: 4
+    
 
 params:
     description: "Hi! My name is Vedika S. Bang."
     author: Vedika Bang
     # googleAnalyticsID: "G-XXXXX"
     DateFormat: "January 2006"
-    defaultTheme: light
-    hideFooter: false
-    disableThemeToggle: true
-    ShowShareButtons: false
+    defaultTheme: dark
+    hideFooter: true
+    disableThemeToggle: false
+    ShowShareButtons: true
     ShowReadingTime: false
     disableSpecial1stPost: true
     disableAnchoredHeadings: true
@@ -40,7 +44,7 @@ params:
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: false
-    ShowToc: false
+    ShowToc: true
     disableScrollToTop: true
     TocOpen: true
     ShowWordCount: false
@@ -50,35 +54,42 @@ params:
     profileMode:
           enabled: true
           title: Vedika Bang
-          subtitle: "I am a Professor of Subject at the University of Place. I work on various topics. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo."
-          imageUrl: "image1.jpeg"
-          imageWidth: 160
-          imageHeight: 160
-          imageTitle: Prof. Name
+          description: "Security Engineer"
+          subtitle: "Security Engineer
+          <br><br>
+          Hi. Thank you for visiting my web-page. I recently graduated from Georgia Tech (Aug 2022 - Dec 2023) with a Masters in Cybersecurity (Computer Science Track). 
+          I'm primarily interested in Detection and Response, and Reverse Engineering. 
+          
+          <br><br>
+          Before  coming to Georgia Tech, I earned my Bachelor's degree from Pune Institute of Computer Technology, Pune, specializing in Electronics and Telecommunications Engineering. 
+          In the initial two years, I was deeply engrossed in perfecting my circuit diagrams, occasionally lamenting over lost marks for overlooking the current's direction. 
+          However, the latter two years at PICT were genuinely enriching, where I immersed myself in Computer Networks, Operating Systems, and a great deal more!
+
+          <br><br>
+          I have 2 years of experience in Digital Forensics and Incident Response, Malware Analysis through diverse internships and work experiences. I'm not sure If I know how to answer \"Why Cybersecurity \" without sounding cliche : I absolutely love it. 
+          I like to write, but I'm no writer - [blog] for sharing my write-ups and random topics I found interesting."
+          imageURL: "/image1.jpg"
+          imageWidth: 200
+          imageHeight: 200
           buttons:
-            - name: Papers
-              url: papers/
-            - name: Courses
-              url: courses/
-            - name: Data
-              url: data/
-            - name: Newsletter
-              url: https://pmichaillat.substack.com
-            - name: Tags
-              url: tags/
-            - name: Archive
-              url: archive/
+            - name: Education
+              url: /education/
+            - name: Experience
+              url: /experience/
+            - name: Projects
+              url: /projects/
+            - name: Blog
+              url: /blog/
     socialIcons:
         - name: CV
-          url: cv.pdf
+          url: /cv.pdf
         - name: Email
-          url: mailto:pascal.michaillat@gmail.com
-        - name: Location
-          url: location/
+          url: mailto:vedikabang@gatech.edu
+        - name: LinkedIn
+          url: https://www.linkedin.com/in/vedikabang/
         - name: GitHub
-          url: https://github.com/pmichaillat
-        - name: Photography
-          url: https://twitter.com/pmichaillat
+          url: https://github.com/VedikaBang
+        
 
     assets:
         disableHLJS: true
@@ -87,17 +98,17 @@ params:
         hiddenInList: false
         hiddenInSingle: true
     label:
-      text: "Prof. Name"
+      text: "Vedika Bang"
       icon: favicon.ico
       iconHeight: 18
 
 markup:
     goldmark:
         renderer:
-            unsafe: true
+          unsafe: true
     highlight:
         guessSyntax: true
-        style: autumn 
+        style: xcode
     tableOfContents:
         endLevel: 2
         ordered: false
