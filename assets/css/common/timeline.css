@@ -1,0 +1,49 @@
+/* Timeline styles */
+.timeline {
+  position: relative;
+  padding-left: 50px; /* Adjust based on timeline icon width */
+  border-left: 2px solid #d3acff; /* Timeline vertical line */
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Center the icon on the line */
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%; /* Makes it round */
+  border: 2px solid #bf9df7; /* The ring part of the icon */
+  background: transparent; /* Makes the inside of the ring transparent */
+  color: #bf9df7; /* Color of the emoji or text inside the icon */
+  text-align: center;
+  box-sizing: border-box; /* Ensures the width and height include the border */
+}
+.timeline-content {
+  background: #efeeef;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Hover effect */
+.timeline-content:hover {
+  box-shadow: 0 5px 15px rgba(187, 147, 237, 0.2);
+}
+
+.card-header {
+  position: relative;
+}
+
+.school-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100px; /* Adjust as necessary */
+  height: auto;
+
+}

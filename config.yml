@@ -33,7 +33,7 @@ params:
     author: Vedika Bang
     # googleAnalyticsID: "G-XXXXX"
     DateFormat: "January 2006"
-    defaultTheme: dark
+    defaultTheme: light
     hideFooter: true
     disableThemeToggle: false
     ShowShareButtons: true
@@ -94,10 +94,10 @@ params:
 
     assets:
         disableHLJS: true
-        disableScrollBarStyle: true
+        disableScrollBarStyle: false
     cover:
         hiddenInList: false
-        hiddenInSingle: true
+        hiddenInSingle: false
     label:
       text: "Vedika Bang"
       icon: favicon.ico

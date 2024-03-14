@@ -1,17 +1,18 @@
 ---
-title: "Unemployment" 
-date: 2024-03-03
-url: /c1/
+title: "Cyber Summer Associate" 
+
+date: June 2023
+url: /Aon/
 aliases:
-    - /t1.html
-tags: ["Beveridge curve","business cycles","efficiency","government spending","job rationing","matching function","multiplier","unemployment","unemployment gap","unemployment insurance","wage rigidity"]
-author: "Pascal Michaillat"
-description: "This course presents a matching model of unemployment and uses it to study unemployment fluctuations, job rationing, and labor market policies." 
-summary: "This course presents a matching model of unemployment. It uses the model to study unemployment fluctuations; job rationing; efficient unemployment and unemployment gap; and labor market policies such as minimum wage, public employment, and unemployment insurance." 
+    - /Aon.html
+tags: ["DFIR","Aon","Stroz Friedberg"]
+author: "Vedika Bang"
+description: "My summer internship at AON as a Cyber Summer Associate" 
+summary: "My summer'23 internship at Stroz Friedberg, an Aon Company as Cyber Summer Associate with Digital Forensincs and Incident Response team in Washington, DC office." 
 cover:
-    image: "/image1.png"
-    alt: "Rationing and frictional unemployment in the United States, 1964–2009"
-    relative: false
+    image: "/aon.png"
+    alt: "Stroz Friedberg, an Aon Company"
+    relative: true
 editPost:
     URL: "https://github.com/pmichaillat/unemployment"
     Text: "Course portal – Spring 2024"
