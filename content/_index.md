@@ -1,7 +1,7 @@
 ---
 title: "Computer Forensics Engineer - Research Intern" 
 date: June 2023
-url: /1/
+url: /projects
 aliases: 
     - /2.html
 tags: ["Aon","Stroz Friedberg","DFIR","Threat Intelligence","Threat Hunt", "BEC", "Python" ]
