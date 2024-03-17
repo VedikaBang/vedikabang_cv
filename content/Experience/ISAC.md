@@ -1,13 +1,13 @@
 ---
-title: "Cyber Summer Associate - Digital Forensics & Incident Response" 
-date: 2024-03-17
-url: /aon/
+title: "Computer Forensics Engineer - Research Intern" 
+date: June 2023
+url: /isac/
 aliases: 
-    - /1.html
+    - /2.html
 tags: ["Aon","Stroz Friedberg","DFIR","Threat Intelligence","Threat Hunt", "BEC", "Python" ]
 description: "My summer internship at Aon Cyber Solutions, Washington DC" 
 summary: "My Summer Internship at Stroz Friedberg, an Aon Company as a Cyber Summer Associate (CSA) with DFIR team in Washington, DC." 
-order: 1
+order: 2
 ---
 hellooo
 
