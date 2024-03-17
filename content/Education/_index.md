@@ -1,16 +1,18 @@
 ---
 layout: post
-title: My Vertical Timeline
+title: Education
 date: 2024-03-13
 categories: timeline
 ---
+# Education
 
 <body>
 <div class="timeline">
   <div class="timeline-item" id="ceo-gencoin">
+    <div class="timeline-icon"></div>
     <!-- Removed the timeline-icon div since the script will handle the tracker -->
     <div class="timeline-content">
-    <img src="/aon.png" alt="School Logo" class="school-logo" style="float:left;">
+    <img src="/aon.png" alt="School Logo" class="school-logo">
       <h2>CEO</h2>
       <p>GenCoin</p>
       <p>January 2021 - Present · California</p>
@@ -23,7 +25,7 @@ categories: timeline
   </div>
 
   <div class="timeline-item" id="professor-universityx">
-    <!-- Removed the timeline-icon div -->
+    <div class="timeline-icon"></div>
     <div class="timeline-content">
         <img src="/pictlogo.jpg" alt="School" class="school-logo">
     <h2>Professor of Semiconductor Physics</h2>
