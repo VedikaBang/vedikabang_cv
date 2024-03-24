@@ -25,7 +25,7 @@ menu:
           weight: 4
         - name: tags
           url: /tags/
-          weight: 4
+          weight: 5
     
 
 params:
@@ -44,7 +44,7 @@ params:
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: false
-    ShowToc: true
+    ShowToc: false
     disableScrollToTop: true
     TocOpen: true
     ShowWordCount: false

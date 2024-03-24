@@ -1,13 +1,20 @@
 ---
-title: "WattleCorp Cybersecurity Labs" 
-date: June 2023
-url: /aon/
+title: "Vulnerability Assessment and Penetration Tester Intern" 
+url: /wattlecorp/
 aliases: 
-    - /1.html
-tags: ["Aon","Stroz Friedberg","DFIR","Threat Intelligence","Threat Hunt", "BEC", "Python" ]
-description: "My summer internship at Aon Cyber Solutions, Washington DC" 
-summary: "Vulnerability and Penetration Testing Intern" 
+    - /3.html
+tags: ["VAPT","Script Kiddie","Threat Hunt", "Black Box", "Python" ]
+description: "My internship with Wattlecorp Cybersecurity Labs as VAPT Intern" 
+summary: "My internship with Wattlecorp Cybersecurity Labs as VAPT Intern" 
 order: 3
 ---
-hellooo
+<details>
+<summary><strong>Responsibilities</strong></summary>
+
+## Vulnerability Assessments & Penetration Tests:
+  - Successfully executed vulnerability assessments and penetration tests on 6 assigned systems and IoT devices.
+  - Identified and reported critical security vulnerabilities.
+  
+</details>
+
 
