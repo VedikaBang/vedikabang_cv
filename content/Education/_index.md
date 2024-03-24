@@ -4,7 +4,7 @@ title: Education
 date: 2024-03-13
 categories: timeline
 ---
-# Education
+<p align= "center"><em><strong> Education</strong></em> </p>
 
 <body>
 <div class="timeline">

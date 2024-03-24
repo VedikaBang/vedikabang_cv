@@ -6,7 +6,7 @@ aliases:
 tags: ["Teaching"]
 description: "On-Campus"
 summary: "My On-Campus employment as a Graduate Teachin Assistant at Georgia Tech for Fall'23."
-order: 5
+order: 4
 ---
 <div class="justify-text">
 <details>

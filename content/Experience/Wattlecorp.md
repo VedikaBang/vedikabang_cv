@@ -7,6 +7,9 @@ tags: ["VAPT","Script Kiddie","Threat Hunt", "Black Box", "Python" ]
 description: "My internship with Wattlecorp Cybersecurity Labs as VAPT Intern" 
 summary: "My internship with Wattlecorp Cybersecurity Labs as VAPT Intern" 
 order: 3
+showToc: true
+disableAnchoredHeadings: false
+
 ---
 <details>
 <summary><strong>Responsibilities</strong></summary>

@@ -1,7 +1,8 @@
 ---
-layout: post
-title: 'Internships and Research Experiences'
-summary: "stuff"
-date: 2024-03-13
-categories: cards
+title: "Experiences"
+author: "Vedika Bang"
+description: "Research Work & Internships"
 ---
+
+
+<p align= "center"><em><strong> Work Experience & Research Internships </strong></em> </p>
