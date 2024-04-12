@@ -14,8 +14,6 @@ disableAnchoredHeadings: false
 
 <div style="font-family: 'Times New Roman', serif; text-align: justify;">
 
-- Analyzed MSP tools such as RMMs - ScreenConnect, and AnyDesk in collaboration with the solution development team to create plugins. Contributed to the identification and documentation of tactics, techniques, and procedures (TTPs) and integrated over 40 unique Indicators of Compromise (IoCs) into the in-house SIEM, enhancing threat intelligence capabilities and incident response efficiency.
-- Performed comprehensive host-based analysis on over 70 digital forensic images using tools like X-ways, EnCase, and FTKImager, while analyzing firewall logs, VPN logs, network traffic, and logs from O365, AWS, and Azure environments for a Business Email Compromise (BEC) to identify potential Adversarial TTPs.
-- Developed Python and PowerShell scripts to automate routine tasks with custom scripts, reducing manual workload by 10%, while assisting on an Incident response engagement.
+- Performed vulnerability assessments, penetration tests, and code reviews on 6 assigned systems, utilizing both SAST (Static Application Security Testing) and DAST (Dynamic Application Security Testing) methodologies to identify and mitigate security risks - reported and documented DOM-XSS
 
 </div>
