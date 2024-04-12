@@ -1,18 +1,13 @@
-{{ define "main" }}
-<div class="featured-content">
-    {{ range .Site.RegularPages.ByDate.Reverse }}
-    <article>
-        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-        <p>
-            {{- with .Params.date -}}
-                {{ dateFormat "January 2, 2006" . }}
-                {{- if $.Params.endDate -}}
-                    - {{ dateFormat "January 2, 2006" $.Params.endDate }}
-                {{- end -}}
-            {{- end -}}
-        </p>
-        <div>{{ .Summary }}</div>
-    </article>
+{{ with .Params.start_date }}
+  {{ $start := time.Parse "2006-01-02" . }}
+  {{ with $.Params.end_date }}
+    {{ $end := time.Parse "2006-01-02" . }}
+    {{ if ne ($start.Format "2006") ($end.Format "2006") }}
+      {{ dateFormat "January 2, 2006" $start }} - {{ dateFormat "January 2, 2006" $end }}
+    {{ else if ne ($start.Format "1") ($end.Format "1") }}
+      {{ dateFormat "January 2" $start }} - {{ dateFormat "January 2, 2006" $end }}
+    {{ else }}
+      {{ dateFormat "January 2" $start }}-{{ dateFormat "2, 2006" $end }}
     {{ end }}
-</div>
+  {{ end }}
 {{ end }}
