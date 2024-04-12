@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="featured-content">
+    {{ range .Site.RegularPages.ByDate.Reverse }}
+    <article>
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p>
+            {{- with .Params.date -}}
+                {{ dateFormat "January 2, 2006" . }}
+                {{- if $.Params.endDate -}}
+                    - {{ dateFormat "January 2, 2006" $.Params.endDate }}
+                {{- end -}}
+            {{- end -}}
+        </p>
+        <div>{{ .Summary }}</div>
+    </article>
+    {{ end }}
+</div>
+{{ end }}

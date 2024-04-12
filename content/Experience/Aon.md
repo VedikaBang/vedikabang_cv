@@ -3,28 +3,17 @@ title: "Cyber Summer Associate - Digital Forensics & Incident Response"
 url: /aon/
 aliases:
   - /1.html
+date: "2023-06-05"
+endDate: "2023-08-13"
 tags: ["Aon", "Stroz Friedberg", "DFIR", "Threat Intelligence", "Threat Hunt", "BEC", "Python"]
 description: "My summer internship at Aon Cyber Solutions, Washington DC"
 summary: "My Summer Internship at Stroz Friedberg, an Aon Company as a Cyber Summer Associate (CSA) with the DFIR team in Washington, DC."
-order: 1
+order: 0
 ---
-<div class="justify-text">
-<details>
-<summary><strong>Responsibilities</strong></summary>
+<div style="font-family: 'Times New Roman', serif; text-align: justify;">
 
-- **In-depth Analysis of Remote Access Tools:**
-  - Conducted comprehensive analysis on Remote Access Tools, focusing on dual-use tools
-  - Integrated over 30 unique Indicators of Compromise (IoCs) into Aon’s SIEM tool in collaboration with the solution development team, boosting incident response efficiency
-- **Digital Forensic Analysis:**
-  - Performed host-based analysis on over 70 digital forensic images using tools such as X-ways, EnCase, and FTKImager
-  - Examined firewall logs, VPN logs, network captures, and logs from O365 and AWS, Azure environments for Business Email Compromise (BEC) investigations to identify potential Adversarial Tactics, Techniques, and Procedures (TTPs)
-- **Automation Script Development:**
-  - Developed Python and PowerShell scripts to automate routine tasks with custom scripts, reducing manual workload by 10%
+- Analyzed MSP tools such as RMMs - ScreenConnect, and AnyDesk in collaboration with the solution development team to create plugins. Contributed to the identification and documentation of tactics, techniques, and procedures (TTPs) and integrated over 40 unique Indicators of Compromise (IoCs) into the in-house SIEM, enhancing threat intelligence capabilities and incident response efficiency.
+- Performed comprehensive host-based analysis on over 70 digital forensic images using tools like X-ways, EnCase, and FTKImager, while analyzing firewall logs, VPN logs, network traffic, and logs from O365, AWS, and Azure environments for a Business Email Compromise (BEC) to identify potential Adversarial TTPs.
+- Developed Python and PowerShell scripts to automate routine tasks with custom scripts, reducing manual workload by 10%, while assisting on an Incident response engagement.
 
-</details>
-<div>
-<details>
-<summary><strong>Things I Learned</strong></summary>
-
-
-</details>
+</div>

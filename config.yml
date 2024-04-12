@@ -36,17 +36,17 @@ params:
     defaultTheme: light
     hideFooter: true
     disableThemeToggle: false
-    ShowShareButtons: true
+    ShowShareButtons: false
     ShowReadingTime: false
-    disableSpecial1stPost: true
-    disableAnchoredHeadings: true
-    ShowPostNavLinks: false
+    disableSpecial1stPost: false
+    disableAnchoredHeadings: false
+    ShowPostNavLinks: true
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: false
     ShowToc: false
     disableScrollToTop: true
-    TocOpen: true
+    TocOpen: false
     ShowWordCount: false
     UseHugoToc: true
     comments: false
@@ -97,7 +97,7 @@ params:
         disableScrollBarStyle: false
     cover:
         hiddenInList: false
-        hiddenInSingle: false
+        hiddenInSingle: true
     label:
       text: "Vedika Bang"
       icon: favicon.ico
