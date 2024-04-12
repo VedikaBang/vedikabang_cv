@@ -40,9 +40,9 @@ params:
     ShowReadingTime: false
     disableSpecial1stPost: false
     disableAnchoredHeadings: false
-    ShowPostNavLinks: true
+    ShowPostNavLinks: false
     ShowBreadCrumbs: false
-    ShowCodeCopyButtons: true
+    ShowCodeCopyButtons: false
     ShowRssButtonInSectionTermList: false
     ShowToc: false
     disableScrollToTop: true
@@ -67,8 +67,7 @@ params:
 
           <br><br>
           I have 2 years of experience in Digital Forensics and Incident Response, Malware Analysis through diverse internships and work experiences. I'm not sure If I know how to answer \"Why Cybersecurity \" without sounding cliche : I absolutely love it. 
-          I like to write, but I'm no writer - [blog] for sharing my write-ups and random topics I found interesting."
-          
+          I'm not a writer; but I like to write - **[stuff/blog](https://vedikabang.com/blog/)** where I share my write-ups and random topics I found interesting."
           imageURL: "/vedika.jpg"
           imageWidth: 200
           imageHeight: 200
