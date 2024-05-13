@@ -21,7 +21,7 @@ description: "Research Work & Internships"
         <p class="click-prompt">Responsibilities ↓</p>
         <div id="detail1" class="details" style="display:none;">
           <ul>
-            <li>Analyzing password-stealing trojans against open-source password managers, focusing on MITRE ATT&CK’s TA0006 Credential Access.Identifying vulnerabilities and improving detection and prevention strategies.</li>
+            <li>Analyzing password-stealing trojans against open-source password managers, focusing on MITRE ATT&CK’s TA0006 Credential Access. Identifying vulnerabilities and improving detection and prevention strategies.</li>
           </ul>    
         </div>
       </div>
@@ -42,7 +42,8 @@ description: "Research Work & Internships"
           <div class="beyond-code">
             <p><strong>Well, it's not all tech:</strong></p>
             <ul>
-              <li>After working remote, in-office internship made me realize how important it is to build relationships, network beyond 'hey - how's it going'</li>
+              <li>One of my interviewers once asked me, "Can you explain AES-128 to a six-year-old?" and followed it with, "If you can't explain it to a six-year-old, you don't understand it yourself." (I think Einstein said it first) -- I couldn't do it. I knew all the technical terms like Alice and Bob, but nine years later, I realize that he was right—I didn't truly understand it myself then. That rejection pushed me to focus on concepts and break down technical terms with well-worded analogies that make sense to everyone. It surely helped me through my TA-ship, and life ( It, indeed, was profound advise )</li>
+              <li> You were one of the few TAs I have had Georgia Tech who actually cared about the students and cared if they were getting anything valuable from the course - An anonymous feedback.
             </ul>
           </div>
         </div>
