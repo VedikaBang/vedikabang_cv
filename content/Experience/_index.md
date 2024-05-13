@@ -52,7 +52,7 @@ description: "Research Work & Internships"
 <div class="timeline-item">
       <div class="timeline-icon"></div>
       <div class="timeline-content" onclick="toggleDetails('detail3')">
-        <h3>Cyber Summer Associate at Stroz Friedberg, an Aon</h3>
+        <h3>Cyber Summer Associate at Stroz Friedberg, an Aon Company</h3>
         <p class="timeline-date">June 2023 - August 2023</p>
         <p class="timeline-overview" style="text-decoration: none;">My Summer Internship at Stroz Friedberg, an Aon Company as a Cyber Summer Associate (CSA) with the DFIR team in Washington, DC.</p>
         <p class="click-prompt">Responsibilities ↓</p>
