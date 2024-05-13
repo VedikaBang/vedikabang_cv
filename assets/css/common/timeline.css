@@ -60,3 +60,28 @@
   /* Adjust as necessary */
   height: auto;
 }
+
+.details {
+  padding-top: 5px;
+  border-top: 1px dashed #ccc;
+  margin-top: 5px;
+}
+
+.beyond-code {
+  border-top: 1px dashed #ccc; /* Apply dashed line to top of soft skills section */
+  padding-top: 5px;
+  margin-top: 10px; /* Adjust spacing as needed */
+}
+
+.click-prompt {
+  color: #21162e92; 
+  cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
+  font-size: 0.9em; /* Slightly smaller font size */
+  margin-top: 5px; /* Spacing from the date */
+  text-decoration: underline; /* Underline to indicate it's interactive */
+}
+
+.timeline-overview {
+  text-decoration: none;
+  margin-bottom: 5px; /* Provides some spacing between this and the next paragraph */
+}
