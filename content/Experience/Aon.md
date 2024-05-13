@@ -8,7 +8,7 @@ endDate: "2023-08-13"
 tags: ["Aon", "Stroz Friedberg", "DFIR", "Threat Intelligence", "Threat Hunt", "BEC", "Python"]
 description: "My summer internship at Aon Cyber Solutions, Washington DC"
 summary: "My Summer Internship at Stroz Friedberg, an Aon Company as a Cyber Summer Associate (CSA) with the DFIR team in Washington, DC."
-order: 0
+order: 1
 ---
 <div style="font-family: 'Times New Roman', serif; text-align: justify;">
 

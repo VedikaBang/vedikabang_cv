@@ -6,7 +6,7 @@ aliases:
 tags: ["ISAC","Malware Analysis","Exploit Developer","Threat Intelligence","Threat Hunt", "Linux", "Python" ]
 description: "Research Internship" 
 summary: "Computer Forensics Engineer - Research Intern at Information Sharing and Analysis Center, Delhi" 
-order: 1
+order: 2
 showToc: false
 disableAnchoredHeadings: false
 
