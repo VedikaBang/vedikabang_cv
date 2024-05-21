@@ -12,6 +12,7 @@
     transition: transform 0.1s;
     border: 1px solid var(--border);
     font-size: var(--homesize);
+    font-family: 'Times New Roman';
 }
 
 .terms-tags a:hover {

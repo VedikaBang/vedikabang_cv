@@ -10,11 +10,13 @@
     min-height: calc(100vh - var(--footer-height) - (var(--gap) * 2));
     font-size: var(--homesize);
     line-height: var(--lineheight);
+    font-family: 'Times New Roman';
 }
 
 .profile .profile_inner h1 {
     padding: 12px 0;
     font-size: 40px;
+    font-family: 'Times New Roman';
 }
 
 .profile img {

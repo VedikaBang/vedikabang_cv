@@ -5,6 +5,7 @@
     justify-content: center;
     min-height: 200px;
     margin: var(--gap) 0 calc(var(--gap) * 2) 0;
+    font-family: 'Times New Roman';
 }
 
 .first-entry .entry-header {
@@ -23,6 +24,7 @@
     margin: 14px 0;
     font-size: 16px;
     -webkit-line-clamp: 8;
+    font-family: 'Times New Roman';
 }
 
 .first-entry .entry-footer {
@@ -54,6 +56,7 @@
 .entry-header h2 {
     font-size: 20px;
     line-height: var(--lineheight);
+    font-family: 'Times New Roman';
 }
 
 .entry-content {
@@ -65,6 +68,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 8;
+    font-family: 'Times New Roman';
 }
 
 .entry-footer {
