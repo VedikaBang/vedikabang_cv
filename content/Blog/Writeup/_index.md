@@ -7,18 +7,11 @@ aliases:
 description: "so much I can write about -"
 summary: "Systematic organization of my blog!"
 weight: 20
-showToc: true
-
+showToc: false
 ---
 
-## OverTheWire
----
-## HTB-Sherlocks
----
-## UnderTheWire
----
-## HTB
----
+
+
 
 
 

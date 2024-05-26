@@ -23,7 +23,7 @@ menu:
         - name: Blog
           url: /blog/
           weight: 4
-        - name: tags
+        - name: Tags
           url: /tags/
           weight: 5
     
@@ -35,21 +35,21 @@ params:
     DateFormat: "January 2006"
     defaultTheme: light
     hideFooter: true
-    disableThemeToggle: true
+    disableThemeToggle: false
     ShowShareButtons: false
-    ShowReadingTime: false
+    ShowReadingTime: True
     disableSpecial1stPost: false
     disableAnchoredHeadings: false
-    ShowPostNavLinks: false
+    ShowPostNavLinks: True
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: false
     ShowRssButtonInSectionTermList: false
     ShowToc: false
-    disableScrollToTop: true
+    disableScrollToTop: True
     TocOpen: false
     ShowWordCount: false
-    UseHugoToc: true
-    comments: false
+    UseHugoToc: false
+    comments: true
     math: true
     profileMode:
           enabled: true
