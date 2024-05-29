@@ -12,7 +12,7 @@ cover:
     image: "/sherlock.png"
     relative: false
 tags: ["DFIR"]
-ShowToc: True
+
 ---
 <div style="font-family: 'Times New Roman', serif; text-align: justify;">
 
