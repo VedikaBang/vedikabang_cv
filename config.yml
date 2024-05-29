@@ -46,7 +46,7 @@ params:
     ShowRssButtonInSectionTermList: false
     ShowToc: false
     disableScrollToTop: True
-    TocOpen: false
+    TocOpen: True
     ShowWordCount: false
     UseHugoToc: false
     comments: true
