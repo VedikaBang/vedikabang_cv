@@ -74,7 +74,7 @@ This is actually pretty neat; because after the first "successful login" which a
 ##### Task 5
 Alright, after gaining access, the attacker quickly moved to create persistence by adding an account. This is quite evident from the different services that were invoked during the session (told you, auth.log is quite verbose!)
 
-So -- (that's how all the interesting story starts xD) On March 6 At 06:34:18, attacker got in and created a new group called cyberjunkie with the GID of 1002, adding it into /etc/group and /etc/gshadow. This group creation was a setup for what was coming next.  Without wasting any time, they attacker created a new user named `cyberjunkie` (UID=1002, GID=1002) at the same moment, setting up this user with a home directory at /home/cyberjunkie and gave it a default shell of /bin/bash, laying the groundwork for persistence on the system.
+So -- (that's how all the interesting stories start xD) On March 6 At 06:34:18, attacker got in and created a new group called cyberjunkie with the GID of 1002, adding it into /etc/group and /etc/gshadow. This group creation was a setup for what was coming next.  Without wasting any time, they attacker created a new user named `cyberjunkie` (UID=1002, GID=1002) at the same moment, setting up this user with a home directory at /home/cyberjunkie and gave it a default shell of /bin/bash, laying the groundwork for persistence on the system.
 
 Just eight seconds later, at 06:34:26, attacker locked in the access by setting a password for cyberjunkie. To finalize their foothold, attacker updated the user information at 06:34:31, ensuring everything was in place for their new account.
 
