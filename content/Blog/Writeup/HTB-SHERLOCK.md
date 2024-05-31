@@ -119,7 +119,7 @@ Despite the frustrations, I love the open-source community. Knowing that I’m n
 
 During my internship at Aon, I worked closely with logs—Windows logs, to be precise. This experience helped me understand Windows log analysis and showed me how much easier it is to deal with Windows logs compared to Unix logs. I once read someone say, "Linux is free if your time is worthless." While this statement might elicit a smirk of pained recognition, it underscores the complexity and depth of knowledge required for Unix logs, which is exactly why I want to learn more about them.
 
-### See, I told ya - logs have it all, do they?
+### See, I told ya - logs have it all, Or do they?
 
 Log files are everything! You upload them when you create an issue, analyze them when solving someone else's issue, and deep dive into them when working as a consultant. Fortunately, there are amazing SIEM tools available to make this process seemingly easier.
 
