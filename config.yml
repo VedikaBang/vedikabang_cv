@@ -108,8 +108,8 @@ markup:
           unsafe: true
     highlight:
         guessSyntax: true
-        style: xcode
+        style: github
     tableOfContents:
-        endLevel: 2
+        endLevel: 1
         ordered: false
         startLevel: 2
