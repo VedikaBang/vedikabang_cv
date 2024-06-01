@@ -1,9 +1,9 @@
 ---
 title: "OverTheWire: Krypton"
 date: "2024-03-24"
-url: /natas.md/
+url: /krypton.md/
 aliases:
-  - /2.html
+  - /3.html
 description: "Numbers!!!!"
 summary: "All the levels in Krypton are about cryptography.
 showToc: true
