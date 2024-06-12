@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Vedika Bang</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Vedika Bang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Plan</title>
+      <link>http://localhost:1313/tags/plan/</link>
+      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/plan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DFIR</title>
+      <link>http://localhost:1313/tags/dfir/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/dfir/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>First Blog</title>
+      <link>http://localhost:1313/tags/first-blog/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/first-blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sherlock</title>
+      <link>http://localhost:1313/tags/sherlock/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/sherlock/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stuff</title>
+      <link>http://localhost:1313/tags/stuff/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/stuff/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wargame</title>
+      <link>http://localhost:1313/tags/wargame/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/wargame/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Whys</title>
+      <link>http://localhost:1313/tags/whys/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/whys/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Advanced Network Security</title>
+      <link>http://localhost:1313/tags/advanced-network-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/advanced-network-security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Capstone Project</title>
+      <link>http://localhost:1313/tags/capstone-project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/capstone-project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Critical Infrastructure</title>
+      <link>http://localhost:1313/tags/critical-infrastructure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/critical-infrastructure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>E-Mail Security</title>
+      <link>http://localhost:1313/tags/e-mail-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/e-mail-security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EMS</title>
+      <link>http://localhost:1313/tags/ems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/ems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Living Off the Land Attack</title>
+      <link>http://localhost:1313/tags/living-off-the-land-attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/living-off-the-land-attack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mari-Time</title>
+      <link>http://localhost:1313/tags/mari-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/mari-time/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Not-Petya</title>
+      <link>http://localhost:1313/tags/not-petya/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/not-petya/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Phishing</title>
+      <link>http://localhost:1313/tags/phishing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/phishing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Profit-Centers</title>
+      <link>http://localhost:1313/tags/profit-centers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/profit-centers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Residential ISP</title>
+      <link>http://localhost:1313/tags/residential-isp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/residential-isp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resilience</title>
+      <link>http://localhost:1313/tags/resilience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/resilience/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

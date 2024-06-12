@@ -1,7 +1,7 @@
 ---
 title: "How To Navigate: Categories"
 date: "2024-03-24"
-url: /b2/
+url: /b3/
 aliases:
   - /2.html
 description: "so much I can write about -"

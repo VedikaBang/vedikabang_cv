@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>OverTheWire : Krypton | Vedika Bang</title>
+<meta name="keywords" content="Wargame">
+<meta name="description" content="All the levels in Krypton are about cryptography, and Cryptopal Basics">
+<meta name="author" content="Vedika Bang">
+<link rel="canonical" href="http://localhost:1313/krypton.md/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4a46afba4eec3cfb36722d5647a30e86033b9772071b1975a4528ce060dc40e0.css" integrity="sha256-Skavuk7sPPs2ci1WR6MOhgM7l3IHGxl1pFKM4GDcQOA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/krypton.md/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="OverTheWire : Krypton" />
+<meta property="og:description" content="All the levels in Krypton are about cryptography, and Cryptopal Basics" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/krypton.md/" />
+<meta property="og:image" content="http://localhost:1313/k.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2024-03-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-03-24T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/k.png" />
+<meta name="twitter:title" content="OverTheWire : Krypton"/>
+<meta name="twitter:description" content="All the levels in Krypton are about cryptography, and Cryptopal Basics"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "OverTheWire : Krypton",
+      "item": "http://localhost:1313/krypton.md/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OverTheWire : Krypton",
+  "name": "OverTheWire : Krypton",
+  "description": "All the levels in Krypton are about cryptography, and Cryptopal Basics",
+  "keywords": [
+    "Wargame"
+  ],
+  "articleBody": " These problems are basic building blocks of Cryptography. I intend to do more than what’s asked.\nLevel 1 The following string encodes the password using Base64: S1JZUFRPTklTR1JFQVQ=\nI’m not entirely sure I understand encoding in its entirety— certainly not in a literal sense. The Wikipedia page for Base64 encoding is quite extensive \u0026 overwhelming. I first came across Base64 years ago in a computer networks class, where I got a brief introduction. Later, in CTFs, I dealt with encoded strings often enough to get a decent understanding of how they’re structured. Online decompilers made this process easier, and knowing the basics helped identify Base64 when I saw it.\nHowever, there have been times when I couldn’t recognize Base64 encoding, often due to the padding. Padding can be confusing, and I’ve noticed that modern implementations of Base64 sometimes skip it altogether, which adds to the confusion. Recently, I learned something interesting about the space overhead of Base64 encoding , and found out PDFs and Git use Base85, which only has a 25% overhead as opposed to the 33% of Base64 read it here first . Do I care? Maybe not on a personal level. But for companies handling vast amounts of data every day, those extra bytes can add up quickly. So, while it might not keep me up at night, it’s definitely something worth considering for large-scale operations. Level 2 Level 3 Level 4 Level 5 Level 6 Level 7 ",
+  "wordCount" : "240",
+  "inLanguage": "en",
+  "image":"http://localhost:1313/k.png","datePublished": "2024-03-24T00:00:00Z",
+  "dateModified": "2024-03-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Vedika Bang"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/krypton.md/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Vedika Bang",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          
+          
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Vedika Bang">
+             
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">Vedika Bang</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/education/" title="Education">
+                    <span>Education</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/experience/" title="Experience">
+                    <span>Experience</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      OverTheWire : Krypton
+    </h1>
+    <div class="post-meta">
+
+<div>
+    
+    
+    
+    
+</div>
+
+
+
+
+
+
+&nbsp;&middot;&nbsp;<a href="https://overthewire.org/wargames/krypton/" rel="noopener noreferrer" target="_blank">krypton</a>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#level-1" aria-label="Level 1">Level 1</a></li>
+                <li>
+                    <a href="#level-2" aria-label="Level 2">Level 2</a></li>
+                <li>
+                    <a href="#level-3" aria-label="Level 3">Level 3</a></li>
+                <li>
+                    <a href="#level-4" aria-label="Level 4">Level 4</a></li>
+                <li>
+                    <a href="#level-5" aria-label="Level 5">Level 5</a></li>
+                <li>
+                    <a href="#level-6" aria-label="Level 6">Level 6</a></li>
+                <li>
+                    <a href="#level-7" aria-label="Level 7">Level 7</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><div style="font-family: 'Times New Roman', serif; text-align: justify;">
+<blockquote>
+<p>These problems are basic building blocks of Cryptography. I intend to do more than what&rsquo;s asked.</p>
+</blockquote>
+<h3 id="level-1">Level 1<a hidden class="anchor" aria-hidden="true" href="#level-1">#</a></h3>
+<blockquote>
+<p>The following string encodes the password using Base64: S1JZUFRPTklTR1JFQVQ=</p>
+</blockquote>
+<p>I’m not entirely sure I understand encoding in its entirety— certainly not in a literal sense. The Wikipedia page for Base64 encoding is quite extensive &amp; overwhelming. I first came across Base64 years ago in a computer networks class, where I got a brief introduction. Later, in CTFs, I dealt with encoded strings often enough to get a decent understanding of how they&rsquo;re structured. Online decompilers made this process easier, and knowing the basics helped identify Base64 when I saw it.</p>
+<p>However, there have been times when I couldn’t recognize Base64 encoding, often due to the padding. Padding can be confusing, and I’ve noticed that modern implementations of Base64 sometimes skip it altogether, which adds to the confusion. Recently, I learned something interesting about the <a href="https://lemire.me/blog/2019/01/30/what-is-the-space-overhead-of-base64-encoding/" target="_blank">space overhead of Base64 encoding</a>
+, and found out PDFs and Git use Base85, which only has a 25% overhead as opposed to the 33% of Base64 <a href="https://github.com/python/cpython/issues/61818" target="_blank">read it here first</a>
+. Do I care? Maybe not on a personal level. But for companies handling vast amounts of data every day, those extra bytes can add up quickly. So, while it might not keep me up at night, it&rsquo;s definitely something worth considering for large-scale operations. <img loading="lazy" src="/memebase64.png" alt="understanding"  />
+</p>
+<h3 id="level-2">Level 2<a hidden class="anchor" aria-hidden="true" href="#level-2">#</a></h3>
+<h3 id="level-3">Level 3<a hidden class="anchor" aria-hidden="true" href="#level-3">#</a></h3>
+<h3 id="level-4">Level 4<a hidden class="anchor" aria-hidden="true" href="#level-4">#</a></h3>
+<h3 id="level-5">Level 5<a hidden class="anchor" aria-hidden="true" href="#level-5">#</a></h3>
+<h3 id="level-6">Level 6<a hidden class="anchor" aria-hidden="true" href="#level-6">#</a></h3>
+<h3 id="level-7">Level 7<a hidden class="anchor" aria-hidden="true" href="#level-7">#</a></h3>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/wargame/">Wargame</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/sherlock.md/">
+    <span> &larr;&nbsp;HTB: Brutus</span>
+  </a>
+  <a class="next" href="http://localhost:1313/blog/reading/r1/">
+    <span>&nbsp;&rarr;</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+</html>

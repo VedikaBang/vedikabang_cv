@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Plan on Vedika Bang</title>
+    <link>http://localhost:1313/tags/plan/</link>
+    <description>Recent content in Plan on Vedika Bang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/plan/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oh Look - She&#39;s back</title>
+      <link>http://localhost:1313/b2/</link>
+      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/b2/</guid>
+      <description>didn&amp;#39;t take a long time (a little, maybe)</description>
+    </item>
+    
+  </channel>
+</rss>
