@@ -21,7 +21,7 @@ description: "Research Work & Internships"
         <p class="click-prompt">Responsibilities ↓</p>
         <div id="detail1" class="details" style="display:none;">
           <ul>
-            <li>Analyzing password-stealing trojans against open-source password managers, focusing on MITRE ATT&CK’s TA0006 Credential Access. Identifying vulnerabilities and improving detection and prevention strategies.</li>
+            <li>Reverse engineering password-stealing trojans against open-source password managers, focusing on MITRE ATT&CK’s TTP, TA0006 Credential Access to identify vulnerabilities and improve detection and prevention strategies</li>
           </ul>    
         </div>
       </div>
@@ -59,7 +59,7 @@ description: "Research Work & Internships"
         <p class="click-prompt">Responsibilities ↓</p>
         <div id="detail3" class="details" style="display:none;">
           <ul>
-            <li>Analyzed MSP tools such as RMMs - ScreenConnect, and AnyDesk in collaboration with the solution development team to create plugins. Contributed to the identification and documentation of tactics, techniques, and procedures (TTPs) and integrated over 40 unique Indicators of Compromise (IoCs) into the in-house SIEM, enhancing threat intelligence capabilities and incident response efficiency.</li>
+            <li>Analyzed MSP tools such as RMMs - ScreenConnect, and AnyDesk in collaboration with the solution development team to create plugins. Contributed to the identification and documentation of tactics, techniques, and procedures (TTPs) and integrated over 40 unique Indicators of Compromise (IoCs) into the in-house SIEM, enhancing threat intelligence capabilities and incident response efficiency by 35%.</li>
             <li>Performed comprehensive host-based analysis on over 70 digital forensic images using tools like X-ways, EnCase, and FTKImager, while analyzing firewall logs, VPN logs, network traffic, and logs from O365, AWS, and Azure environments for a Business Email Compromise (BEC) to identify potential Adversarial TTPs.</li>
             <li>Developed Python and PowerShell scripts to automate routine tasks with custom scripts, reducing manual workload by 10%, while assisting on an Incident response engagement.</li>
           </ul>
@@ -103,7 +103,7 @@ description: "Research Work & Internships"
       <div class="timeline-icon"></div>
       <div class="timeline-content" onclick="toggleDetails('detail5')">
         <h3>Vulnerability Assessment and Penetration Tester Intern</h3>
-        <p class="timeline-date">August 2021 - September 2021</p>
+        <p class="timeline-date">August 2021 - December 2021</p>
         <p class="timeline-overview" style="text-decoration: none;">My internship at Wattlecorp Cybersecurity Labs, India.</p>
         <p class="click-prompt">Responsibilities ↓</p>
         <div id="detail5" class="details" style="display:none;">

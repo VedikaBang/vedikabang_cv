@@ -33,4 +33,4 @@ However, there have been times when I couldn’t recognize Base64 encoding, ofte
 ### Level 4
 ### Level 5
 ### Level 6
-### Level 7     
+### Level 7      
