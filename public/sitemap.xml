@@ -10,6 +10,9 @@
   </url><url>
     <loc>http://localhost:1313/p1/</loc>
   </url><url>
+    <loc>http://localhost:1313/unit42.md/</loc>
+    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/b3/</loc>
     <lastmod>2024-03-24T00:00:00+00:00</lastmod>
   </url><url>
@@ -29,24 +32,21 @@
     <loc>http://localhost:1313/p4/</loc>
   </url><url>
     <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dfir/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/dfir-sherlock/</loc>
+    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/first-blog/</loc>
     <lastmod>2024-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/sherlock/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/stuff/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
     <lastmod>2024-03-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/wargame/</loc>
@@ -67,6 +67,8 @@
     <loc>http://localhost:1313/tags/capstone-project/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/critical-infrastructure/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/dfir/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/e-mail-security/</loc>
   </url><url>

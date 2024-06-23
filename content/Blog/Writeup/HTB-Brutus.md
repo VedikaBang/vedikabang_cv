@@ -11,7 +11,7 @@ showToc: true
 cover:
     image: "/sherlock.png"
     relative: false
-tags: ["DFIR","Sherlock"]
+tags: ["DFIR-Sherlock"]
 
 ---
 <div style="font-family: 'Times New Roman', serif; text-align: justify;">
@@ -21,7 +21,7 @@ tags: ["DFIR","Sherlock"]
 ### Write-up
 > Summary: we'll look into Unix auth.log and wtmp logs. A Confluence server got brute-forced through SSH, and we'll track what the attacker did using auth.log. We'll see how this log can show us brute-force attempts, privilege escalation, persistence, and even some command execution. [Pawned Brutus](https://labs.hackthebox.com/achievement/sherlock/1713677/631)
 
-##### Reconnaisance
+##### Reconnaissance
 We're given two log files. auth.log and wtmp.log. It is important to understand the structure of logs to process them.![Files](/ls-al.png)
 
 ```auth.log ```: The auth.log file is where your system keeps track of all the stuff related to logging in and out. It's super useful for keeping an eye on who’s trying to get into your system, whether they're successful or not. You can find records of users logging in, failed login attempts, and other authentication events. It’s basically a way to monitor and audit what's happening with user access on your linux sysytem.
@@ -39,12 +39,12 @@ We're given two log files. auth.log and wtmp.log. It is important to understand 
     > Both of these logs are literal example of same same, but different different. `auth.log` is more verbose than wtmp logs. This file logs authentication events as they happen, so you can see what's going on right now (real-time). However, it also keeps a record of past events, making it useful for reviewing historical data. `wtmp` file logs a record of all login and logout events, including when the system boots and shuts down.
 
 ##### Task 1
-This is where it gets intersting. Honestly, you can either gawk at these logs and get the answers, or can use small bash scripts to parse these logs effectively. We've to analyze the auth.log, to identify the IP address used by the attacker to carry out a brute force attack. Brute-force literally screams try-error/ failed-successful attempts. 
+This is where it gets interesting. Honestly, you can either gawk at these logs and get the answers, or can use small bash scripts to parse these logs effectively. We've to analyze the auth.log, to identify the IP address used by the attacker to carry out a brute force attack. Brute-force literally screams try-error/ failed-successful attempts. 
 
-first, I wrote a command to simplify logs for myself, tbh, these logs don't have consistency so they were a bit tedious to get grep-fied / awk -fied. However, just by looking at the logs I could tell Failed password is for failed attempt and vice versa. Howveer, figuring our fields took longer than I anticipated. 
+first, I wrote a command to simplify logs for myself, tbh, these logs don't have consistency so they were a bit tedious to get grep-fied / awk -fied. However, just by looking at the logs I could tell Failed password is for failed attempt and vice versa. However, figuring our fields took longer than I anticipated. 
 
 ![cut](/fullcommand.png)
-  - `cut` used to extract specific fields from each line of text. `-d` specifies the delimiter. `-f 6` specifies number of the field that we want. Pipe that o/p tp process further to get the part before the `[` character. `sort` sorts it alphabetically and returns counted occureneces in reversed. There was a bit of inconsistency with spaces, but this command returned all the services that were invoked.
+  - `cut` used to extract specific fields from each line of text. `-d` specifies the delimiter. `-f 6` specifies number of the field that we want. Pipe that o/p tp process further to get the part before the `[` character. `sort` sorts it alphabetically and returns counted occurences in reversed. There was a bit of inconsistency with spaces, but this command returned all the services that were invoked.
   - always use `awk` to print out number of field.
 
 For the answer, I need to look into Failed attempts. I think it is obvious that ``` 65.2.161.68``` is the attacker's IP address and he attempted 5 usernames, and ended up getting two right.
@@ -53,7 +53,7 @@ For the answer, I need to look into Failed attempts. I think it is obvious that 
 > Task 1: 65.2.161.68
 
 ##### Task 2
-At this point, it is quite evident that the account that's been brute-forced is `root`. There are total 4 succesful attempts. two from  the attacker's IP address, and we'll talk about rest of them later.
+At this point, it is quite evident that the account that's been brute-forced is `root`. There are total 4 successful attempts. two from  the attacker's IP address, and we'll talk about rest of them later.
 
 ![failed_attempts](/ssh.png) 
 > Task 2: root
@@ -65,7 +65,7 @@ At this point, it is quite evident that the account that's been brute-forced is 
 > Task 3: 2024-03-06 06:32:45
 
 ##### Task 4
-This is actually pretty neat; because after the first "successful login" which also lasted for longer time for quite some time - we can see session number was asiigned to it and coection was establised right after; unlike previous attempts. note, this estalised connection is one second earlier than login stamp of wtmp.
+This is actually pretty neat; because after the first "successful login" which also lasted for longer time for quite some time - we can see session number was assigned to it and connection was established right after; unlike previous attempts. note, this established connection is one second earlier than login stamp of wtmp.
 
 ![failed_attempts](/port37.png) 
 > Task 4: 37

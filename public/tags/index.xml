@@ -6,13 +6,13 @@
     <description>Recent content in Tags on Vedika Bang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>DFIR</title>
-      <link>http://localhost:1313/tags/dfir/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      <title>DFIR-Sherlock</title>
+      <link>http://localhost:1313/tags/dfir-sherlock/</link>
+      <pubDate>Sat, 20 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/dfir/</guid>
+      <guid>http://localhost:1313/tags/dfir-sherlock/</guid>
       <description></description>
     </item>
     
@@ -22,15 +22,6 @@
       <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/first-blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sherlock</title>
-      <link>http://localhost:1313/tags/sherlock/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/tags/sherlock/</guid>
       <description></description>
     </item>
     
@@ -85,6 +76,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/critical-infrastructure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DFIR</title>
+      <link>http://localhost:1313/tags/dfir/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/dfir/</guid>
       <description></description>
     </item>
     

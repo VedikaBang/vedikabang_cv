@@ -108,7 +108,7 @@ markup:
           unsafe: true
     highlight:
         guessSyntax: true
-        style: github
+        style: xcode
     tableOfContents:
         endLevel: 1
         ordered: false
