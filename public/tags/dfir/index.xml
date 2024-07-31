@@ -6,14 +6,5 @@
     <description>Recent content in DFIR on Vedika Bang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language><atom:link href="http://localhost:1313/tags/dfir/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Living off The Land Attacks : Application IoC Generator</title>
-      <link>http://localhost:1313/p1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/p1/</guid>
-      <description>Capstone Project</description>
-    </item>
-    
   </channel>
 </rss>

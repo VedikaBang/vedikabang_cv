@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>HTB: Unit42 | Vedika Bang</title>
 <meta name="keywords" content="DFIR-Sherlock">
-<meta name="description" content="Baby now we got bad logs, but I can fix &#39;em all!">
+<meta name="description" content="JSON is easier with jq!">
 <meta name="author" content="Vedika Bang">
 <link rel="canonical" href="http://localhost:1313/unit42.md/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.2f32515c4d3a0acbcf79054e0c940272cb47bbc4394215cd8256a6c6bb33c096.css" integrity="sha256-LzJRXE06CsvPeQVODJQCcstHu8Q5QhXNglamxrszwJY=" rel="preload stylesheet" as="style">
@@ -28,7 +28,7 @@
 
     </style>
 </noscript><meta property="og:title" content="HTB: Unit42" />
-<meta property="og:description" content="Baby now we got bad logs, but I can fix &#39;em all!" />
+<meta property="og:description" content="JSON is easier with jq!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/unit42.md/" />
 <meta property="og:image" content="http://localhost:1313/unit42.png" /><meta property="article:section" content="blog" />
@@ -38,7 +38,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/unit42.png" />
 <meta name="twitter:title" content="HTB: Unit42"/>
-<meta name="twitter:description" content="Baby now we got bad logs, but I can fix &#39;em all!"/>
+<meta name="twitter:description" content="JSON is easier with jq!"/>
 
 
 <script type="application/ld+json">
@@ -61,12 +61,12 @@
   "@type": "BlogPosting",
   "headline": "HTB: Unit42",
   "name": "HTB: Unit42",
-  "description": "Baby now we got bad logs, but I can fix 'em all!",
+  "description": "JSON is easier with jq!",
   "keywords": [
     "DFIR-Sherlock"
   ],
-  "articleBody": "\rUnit42 Write-up Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto’s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. Pawned Unit42\rReconnaissance We’ve got sysmon logs. Sysmon Logs Sysmon: Often described as “Event Viewer on steroids,” Sysmon allows for extensive customization through its configuration file. This flexibility enables users to tailor Sysmon to their specific needs. It’s important to note that Sysmon does not provide analysis of the events it generates, nor does it attempt to hide itself from attackers. Sysmon Documentation\r. Sysmon is designed to run as a persistent service in the background, capturing and logging system events based on the configured rules. It logs detailed information about system activities, including process creations, network connections, file modifications, and more. Configuration Importance: The configuration file is crucial for effective use of Sysmon. During my initial use of Sysmon, I failed to see the needed information because my configuration was too permissive. With a well-defined configuration, you can specify which event IDs to log, ensuring that Sysmon captures the most relevant data. Sysmon itself does not analyze the events it logs. It functions purely as a data collection tool, requiring integration with other tools for event analysis and further interpretation. Task 1 Open Microsoft-Windows-Sysmon-Operational.evtx for a quick preview - and to group events and determine the frequency of each Event ID. Event ID Summary Event ID Occurrences Description 1 150 Process creation 2 30 File creation time changed 3 75 Network connection 5 60 Process terminated 7 60 Image loaded 10 75 ProcessAccess detected 11 30 File created 12 60 Registry object added or deleted 15 30 File created or overwritten 17 - Named pipe created 22 60 DNS query 23 150 File deleted (with archive attribute) 26 30 File deleted (without archive attribute) Task 2 Reading through .evtx files in Windows Evtx is like trying to read a book with the pages out of order. I needed something more automated, sleek, and consistent. Log Parser 2.2? but this time, the output was so inconsistent I closed it faster than I opened it.\nBy using Evtx to convert .evtx files to JSON and then jq to manipulate and format the JSON data, I finally got the readable, consistent, and tailored log output I was looking for. This box helped me understand jq better.\nTask 3 Task 4 Task 5 Task 6 Task 7 Task 8 ",
-  "wordCount" : "444",
+  "articleBody": "\rUnit42 Write-up Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto’s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. Pawned Unit42\rReconnaissance We’ve got sysmon logs. Sysmon Logs Sysmon: Often described as ’event viewer on sTerOids’, Sysmon allows for extensive customization through its configuration file. It’s important to note that Sysmon does not provide analysis of the events it generates, nor does it attempt to hide itself from attackers. Sysmon Documentation\rSysmon is designed to run as a persistent service in the background, capturing and logging system events based on the configured rules. It logs detailed information about system activities, including process creations, network connections, file modifications, and more. Configuration Importance: The configuration file is crucial for effective use of Sysmon. During my initial use of Sysmon, I failed to see the needed information because my configuration was too permissive. With a well-defined configuration, you can specify which event IDs to log, ensuring that Sysmon captures the most relevant data. Sysmon itself does not analyze the events it logs. It functions purely as a data collection tool, requiring integration with other tools for event analysis and further interpretation. Task 1 Open Microsoft-Windows-Sysmon-Operational.evtx for a quick preview - and view - group events and determine the frequency of each Event ID. Event ID Summary Event ID Occurrences Description 1 06 Process creation 2 16 File creation time change/modify 3 01 Network connection 5 01 Process terminated 7 15 Image loaded 10 01 ProcessAccess detected 11 56 File created 12 14 RegistryEvent added or deleted 13 19 RegistryValues of type DWORD/QWORD 15 02 FileCreateStreamHash 17 07 PipeEvent (Pipe Created) {malware fav} 22 03 DNSQuery executed (Win 8.1 \u003e ) 23 26 File deleted (archived) 26 02 FileDeleteDetected Task 2 Reading through .evtx files in windows Evtx is like trying to read a book with the pages out of order. but we got this! thought of using Log Parser 2.2? but this time, the output was so inconsistent I closed it faster than I opened it.\nupdate: I needed something more automated, sleek, and consistent. By using Evtx to convert .evtx files to JSON and then jq to manipulate and format the JSON data, I finally got the readable, consistent, and tailored log output I was looking for. This box helped me understand jq better. credit: 0xdf for putting out the content that he does, and I couldn’t be more grateful.\rEventID 1: whenever a process is created, EventID 1 is recorded. So, after grouping logs by sorting, we can see that EvenID 1 has appeared 6 times.\nOk, I absolutely love narrating a story; so let’s go step by step. Since these are only 6 logs, I can spend go through each one of them. Information about an EventID is categorized into two parts : System information and EventData. System information is nothing but the meta data about the event ID. In the context of an event log, the term “payload” refers to the actual content or data that describes the event. For the XML data, the “payload” is found within the element. It includes the detailed information about what happened during the event. Oh also - sysmon config files are configured to map event IDs to known MITRE TTPs for better visibility and analysis.\nlog 1, 2 : These logs indicate the initiation of an installation process by a system service. The use of msiexec.exe from the System32 directory with system-level privileges is normal. Since, we’ve grouped this as per eventID - I don’t necessarily think invocation happened in any particular order.\nlog 3 : This event is mapped to MITRE ATT\u0026CK technique T1204, which involves executing a user-initiated action, such as opening a file or clicking a link. This is it, maybe? well, let’s see.\nso the user cyberjunkie downloaded Preventivo24.02.14.exe.exe and executed by double-clicking in file explorer, as indicated by the parent process explorer.exe. It also appears to be an installer for software ‘Photo and vn’ - which is likely to be an editing software (?), also the fact it’s got exe.exe is giving look into me. The user executed the file Preventivo24.02.14.exe.exe at 03:41:56.538, which then might’ve triggered the msiexec.exe processes seen in log 1,2 at 03:41:57.604 and 03:41:58.178\nlog 4 : 2024-02-14 03:41:45.304 this involves pingsender.exe, a firefox utility that sends data back to Firefox.This event is mapped to technique_id=T1027,technique_name=Obfuscated Files or Information probably because data is encoded? However, we can assume that cyberjunkie was browsing firefox and the file Preventivo24.02.14.exe.exe was downloaded via Firefox and saved to the Downloads folder.\nlog 5 : confirms that Preventivo24.02.14.exe.exeinvolves invoking msiexec.exe to install or execute additional files, possibly using the MSI file located in the AppData directory.\nTo be sure, I uploaded hash to virustotal.\ntrailing /V switch in msiexec.exe is used to enable verbose logging for MSI installation processes.\nTask 3 Now, we need to find which cloud drive was used to distribute the malware. If malware uses a cloud drive service for distribution, there will likely be DNS queries related to that service. There are 3 logs invoked under\nEvent ID 22 : shows which domains were looked up by a process, helping identify if a malicious domain was contacted.\nAfter going through them all, I came up with the following tentative timeline. Also, author has used dropbox to download the malware.\nat 03:41:25, Firefox queried uc2f030016253ec53f4953980a4e.dl.dropboxusercontent.com, pointing to Dropbox IPs. This was followed at 03:41:43 by a query to d.dropbox.com, revealing more Dropbox IPs, possible interaction for retrievals of files. at 03:41:56, the executable Preventivo24.02.14.exe.exe made a DNS request to www.example.com, possible c2c server.\nTask 4 This question leads to the next clue - malware is messing with the file stamps. Time Stomping is an obfuscation technique to mislead defender. Event ID 2 captures file creation and modification events. There are 16 of them, damn. Well, all of them are associated with Preventivo24.02.14.exe.exe. Only one of them is related to pdf.\nTask 5 Task 6 Oh so example.com wasn’t exactly C2C. It was most likely to check the internet connection status.\nTask 7 Outgoing network connections? Event ID 3 would lead to the answer. This is tagged as technique_id=T1036,technique_name=Masquerading- explains much. Task 8 The malicious process terminated itself after infecting the PC with a backdoored variant of UltraVNC - Well, There’s just one process under EventID 5. PID 10672, similar to Task2 proves that it’s the malware process. I learned jq ",
+  "wordCount" : "1114",
   "inLanguage": "en",
   "image":"http://localhost:1313/unit42.png","datePublished": "2024-04-20T00:00:00Z",
   "dateModified": "2024-04-20T00:00:00Z",
@@ -255,12 +255,12 @@
                 <li>
                     <a href="#task-7" aria-label="Task 7">Task 7</a></li>
                 <li>
-                    <a href="#task-8" aria-label="Task 8">Task 8</a>
+                    <a href="#task-8" aria-label="Task 8">Task 8</a></li></ul>
+                </li></ul>
                 </li>
-            </ul>
-            </li>
-            </ul>
-            </li>
+                <li>
+                    <a href="#i-learned-jq" aria-label="I learned jq">I learned <code>jq</code></a>
+                </li>
             </ul>
             </li>
             </ul>
@@ -272,7 +272,7 @@
 <h2 id="unit42">Unit42<a hidden class="anchor" aria-hidden="true" href="#unit42">#</a></h2>
 <h3 id="write-up">Write-up<a hidden class="anchor" aria-hidden="true" href="#write-up">#</a></h3>
 <blockquote>
-<p>Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto&rsquo;s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. <a href="https://app.hackthebox.com/sherlocks/Unit42" target="_blank">Pawned Unit42</a>
+<p>Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto&rsquo;s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. <a href="https://labs.hackthebox.com/achievement/sherlock/1713677/632" target="_blank">Pawned Unit42</a>
 </p>
 </blockquote>
 <h4 id="reconnaissance">Reconnaissance<a hidden class="anchor" aria-hidden="true" href="#reconnaissance">#</a></h4>
@@ -281,14 +281,14 @@
 </ul>
 <h6 id="sysmon-logs">Sysmon Logs<a hidden class="anchor" aria-hidden="true" href="#sysmon-logs">#</a></h6>
 <ul>
-<li>Sysmon: Often described as &ldquo;Event Viewer on steroids,&rdquo; Sysmon allows for extensive customization through its configuration file. This flexibility enables users to tailor Sysmon to their specific needs. It&rsquo;s important to note that Sysmon does not provide analysis of the events it generates, nor does it attempt to hide itself from attackers. <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon" target="_blank">Sysmon Documentation</a>
-. Sysmon is designed to run as a persistent service in the background, capturing and logging system events based on the configured rules. It logs detailed information about system activities, including process creations, network connections, file modifications, and more.</li>
+<li>Sysmon: Often described as &rsquo;event viewer on sTerOids&rsquo;, Sysmon allows for extensive customization through its configuration file. It&rsquo;s important to note that Sysmon does not provide analysis of the events it generates, nor does it attempt to hide itself from attackers. <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon" target="_blank">Sysmon Documentation</a>
+ Sysmon is designed to run as a persistent service in the background, capturing and logging system events based on the configured rules. It logs detailed information about system activities, including process creations, network connections, file modifications, and more.</li>
 <li>Configuration Importance: The configuration file is crucial for effective use of Sysmon. During my initial use of Sysmon, I failed to see the needed information because my configuration was too permissive. With a well-defined configuration, you can specify which event IDs to log, ensuring that Sysmon captures the most relevant data.</li>
 <li>Sysmon itself does not analyze the events it logs. It functions purely as a data collection tool, requiring integration with other tools for event analysis and further interpretation.</li>
 </ul>
 <h5 id="task-1">Task 1<a hidden class="anchor" aria-hidden="true" href="#task-1">#</a></h5>
 <ul>
-<li>Open <code>Microsoft-Windows-Sysmon-Operational.evtx</code> for a quick preview - and to group events and determine the frequency of each Event ID.
+<li>Open <code>Microsoft-Windows-Sysmon-Operational.evtx</code> for a quick preview - and view - group events and determine the frequency of each Event ID.
 <img loading="lazy" src="/unit42/task1.png" alt="Task1"  />
 </li>
 </ul>
@@ -304,80 +304,137 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>150</td>
+<td>06</td>
 <td>Process creation</td>
 </tr>
 <tr>
 <td>2</td>
-<td>30</td>
-<td>File creation time changed</td>
+<td>16</td>
+<td>File creation time change/modify</td>
 </tr>
 <tr>
 <td>3</td>
-<td>75</td>
+<td>01</td>
 <td>Network connection</td>
 </tr>
 <tr>
 <td>5</td>
-<td>60</td>
+<td>01</td>
 <td>Process terminated</td>
 </tr>
 <tr>
 <td>7</td>
-<td>60</td>
+<td>15</td>
 <td>Image loaded</td>
 </tr>
 <tr>
 <td>10</td>
-<td>75</td>
+<td>01</td>
 <td>ProcessAccess detected</td>
 </tr>
 <tr>
 <td>11</td>
-<td>30</td>
+<td>56</td>
 <td>File created</td>
 </tr>
 <tr>
 <td>12</td>
-<td>60</td>
-<td>Registry object added or deleted</td>
+<td>14</td>
+<td>RegistryEvent added or deleted</td>
+</tr>
+<tr>
+<td>13</td>
+<td>19</td>
+<td>RegistryValues of type DWORD/QWORD</td>
 </tr>
 <tr>
 <td>15</td>
-<td>30</td>
-<td>File created or overwritten</td>
+<td>02</td>
+<td>FileCreateStreamHash</td>
 </tr>
 <tr>
 <td>17</td>
-<td>-</td>
-<td>Named pipe created</td>
+<td>07</td>
+<td>PipeEvent (Pipe Created) {malware fav}</td>
 </tr>
 <tr>
 <td>22</td>
-<td>60</td>
-<td>DNS query</td>
+<td>03</td>
+<td>DNSQuery executed (Win 8.1 &gt; )</td>
 </tr>
 <tr>
 <td>23</td>
-<td>150</td>
-<td>File deleted (with archive attribute)</td>
+<td>26</td>
+<td>File deleted (archived)</td>
 </tr>
 <tr>
 <td>26</td>
-<td>30</td>
-<td>File deleted (without archive attribute)</td>
+<td>02</td>
+<td>FileDeleteDetected</td>
 </tr>
 </tbody>
 </table>
 <h5 id="task-2">Task 2<a hidden class="anchor" aria-hidden="true" href="#task-2">#</a></h5>
-<p>Reading through .evtx files in <code>Windows Evtx</code> is like trying to read a book with the pages out of order. I needed something more automated, sleek, and consistent. Log Parser 2.2? but this time, the output was so inconsistent I closed it faster than I opened it.</p>
-<p>By using <code>Evtx</code> to convert .evtx files to JSON and then jq to manipulate and format the JSON data, I finally got the readable, consistent, and tailored log output I was looking for. This box helped me understand <code>jq</code> better.</p>
+<p>Reading through .evtx files in <code>windows Evtx</code> is like trying to read a book with the pages out of order. but we got this! thought of using Log Parser 2.2? but this time, the output was so inconsistent I closed it faster than I opened it.</p>
+<blockquote>
+<p>update: I needed something more automated, sleek, and consistent.  By using <code>Evtx</code> to convert .evtx files to JSON and then jq to manipulate and format the JSON data, I finally got the readable, consistent, and tailored log output I was looking for. This box helped me understand <code>jq</code> better. <a href="https://0xdf.gitlab.io/2024/04/11/htb-sherlock-unit42.html" target="_blank">credit: 0xdf for putting out the content that he does, and I couldn&rsquo;t be more grateful.</a>
+</p>
+</blockquote>
+<p><em>EventID 1</em>: whenever a process is created, EventID 1 is recorded. So, after grouping logs by sorting, we can see that EvenID 1 has appeared 6 times.</p>
+<p>Ok, I absolutely love narrating a story; so  let&rsquo;s go step by step. Since these are only 6 logs, I can spend go through each one of them. Information about an EventID is categorized into two parts : System information and EventData. System information is nothing but the meta data about the event ID.  In the context of an event log, the term &ldquo;payload&rdquo; refers to the actual content or data that describes the event. For the XML data, the &ldquo;payload&rdquo; is found within the <EventData> element. It includes the detailed information about what happened during the event. Oh also - sysmon config files are  configured to map event IDs to known MITRE TTPs for better visibility and analysis.</p>
+<ul>
+<li>
+<p>log 1, 2 : These logs indicate the initiation of an installation process by a system service. The use of <code>msiexec.exe</code> from the System32 directory with system-level privileges is normal. Since, we&rsquo;ve grouped this as per eventID - I don&rsquo;t necessarily think invocation happened in any particular order.</p>
+</li>
+<li>
+<p>log 3 : This event is mapped to MITRE ATT&amp;CK technique T1204, which involves executing a user-initiated action, such as opening a file or clicking a link. This is it, maybe? well, let&rsquo;s see.</p>
+</li>
+</ul>
+<p>so the user <code>cyberjunkie</code> downloaded <code>Preventivo24.02.14.exe.exe</code>  and executed by double-clicking in file explorer, as indicated by the parent process <code>explorer.exe</code>. It also appears to be an installer for software &lsquo;Photo and vn&rsquo; -  which is likely to be an editing software (?), also the fact it&rsquo;s got <code>exe.exe</code> is giving look into me. The user executed the file <code>Preventivo24.02.14.exe.exe</code> at 03:41:56.538, which then might&rsquo;ve triggered the <code>msiexec.exe</code> processes seen in log 1,2 at 03:41:57.604 and 03:41:58.178</p>
+<p><img loading="lazy" src="/unit42/exefile.png" alt="Task2"  />
+</p>
+<ul>
+<li>
+<p>log 4 : 2024-02-14 03:41:45.304 this involves pingsender.exe, a firefox utility that sends data back to Firefox.This event is mapped to technique_id=T1027,technique_name=Obfuscated Files or Information probably because data is encoded? However, we can assume that <code>cyberjunkie</code> was browsing firefox and the file <code>Preventivo24.02.14.exe.exe</code> was downloaded via Firefox and saved to the Downloads folder.</p>
+</li>
+<li>
+<p>log 5 : confirms that <code>Preventivo24.02.14.exe.exe</code>involves invoking msiexec.exe to install or execute additional files, possibly using the MSI file located in the AppData directory.</p>
+</li>
+</ul>
+<p><img loading="lazy" src="/unit42/exeinac.png" alt="Task2"  />
+</p>
+<p>To be sure, I uploaded hash to virustotal.</p>
+<p><img loading="lazy" src="/unit42/task2ans.png" alt="Task2"  />
+</p>
+<blockquote>
+<p>trailing /V switch in msiexec.exe is used to enable verbose logging for MSI installation processes.</p>
+</blockquote>
 <h5 id="task-3">Task 3<a hidden class="anchor" aria-hidden="true" href="#task-3">#</a></h5>
+<p>Now, we need to find which cloud drive was used to distribute the malware. If malware uses a cloud drive service for distribution, there will likely be DNS queries related to that service. There are 3 logs invoked under</p>
+<p><em>Event ID 22</em> : shows  which domains were looked up by a process, helping identify if a malicious domain was contacted.</p>
+<p>After going through them all, I came up with the following tentative timeline. Also, author has used <code>dropbox</code> to download the malware.</p>
+<p>at 03:41:25, Firefox queried <code>uc2f030016253ec53f4953980a4e.dl.dropboxusercontent.com</code>, pointing to Dropbox IPs. This was followed at 03:41:43 by a query to <code>d.dropbox.com</code>, revealing more Dropbox IPs, possible interaction for retrievals of files.
+at 03:41:56, the executable <code>Preventivo24.02.14.exe.exe</code> made a DNS request to <code>www.example.com</code>, possible c2c server.</p>
+<p><img loading="lazy" src="/unit42/dropbox.png" alt="Task3"  />
+</p>
 <h5 id="task-4">Task 4<a hidden class="anchor" aria-hidden="true" href="#task-4">#</a></h5>
+<p>This question leads to the next clue - malware is messing with the file stamps. <strong>Time Stomping</strong> is an obfuscation technique to mislead defender. <em>Event ID 2</em> captures file creation and modification events. There are 16 of them, damn. Well, all of them are associated with <code>Preventivo24.02.14.exe.exe</code>. Only one of them  is related to pdf.<br>
+<img loading="lazy" src="/unit42/task4.png" alt="Task4"  />
+</p>
 <h5 id="task-5">Task 5<a hidden class="anchor" aria-hidden="true" href="#task-5">#</a></h5>
+<p><img loading="lazy" src="/unit42/task5.png" alt="Task5"  />
+</p>
 <h5 id="task-6">Task 6<a hidden class="anchor" aria-hidden="true" href="#task-6">#</a></h5>
+<p>Oh so <code>example.com</code> wasn&rsquo;t exactly C2C. It was most likely to check the internet connection status.</p>
 <h5 id="task-7">Task 7<a hidden class="anchor" aria-hidden="true" href="#task-7">#</a></h5>
+<p>Outgoing network connections? <em>Event ID 3</em>  would lead to the answer. This is tagged as  <code>technique_id=T1036,technique_name=Masquerading</code>- explains much.
+<img loading="lazy" src="/unit42/nw.png" alt="Task7"  />
+</p>
 <h5 id="task-8">Task 8<a hidden class="anchor" aria-hidden="true" href="#task-8">#</a></h5>
+<p>The malicious process terminated itself after infecting the PC with a backdoored variant of UltraVNC - Well, There&rsquo;s just one process under EventID 5. PID 10672, similar to Task2 proves that it&rsquo;s the malware process.
+<img loading="lazy" src="/unit42/last.png" alt="Task8"  />
+</p>
+<h3 id="i-learned-jq">I learned <code>jq</code><a hidden class="anchor" aria-hidden="true" href="#i-learned-jq">#</a></h3>
 
 
   </div>
@@ -387,11 +444,8 @@
       <li><a href="http://localhost:1313/tags/dfir-sherlock/">DFIR-Sherlock</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/natas.md/">
-    <span> &larr;&nbsp;OverTheWire: Natas</span>
-  </a>
-  <a class="next" href="http://localhost:1313/sherlock.md/">
-    <span>HTB: Brutus&nbsp;&rarr;</span>
+  <a class="next" href="http://localhost:1313/b1/">
+    <span>My First Blog : A Conundrum&nbsp;&rarr;</span>
   </a>
 </nav>
 

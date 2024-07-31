@@ -6,7 +6,16 @@
     <description>Recent content on Vedika Bang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTB: Unit42</title>
+      <link>http://localhost:1313/unit42.md/</link>
+      <pubDate>Sat, 20 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/unit42.md/</guid>
+      <description>JSON is easier with jq!</description>
+    </item>
+    
     <item>
       <title>My First Blog : A Conundrum</title>
       <link>http://localhost:1313/b1/</link>
@@ -17,21 +26,21 @@
     </item>
     
     <item>
-      <title>OverTheWire: Natas</title>
-      <link>http://localhost:1313/natas.md/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/natas.md/</guid>
-      <description>web security, web security - glad I stumbled upon this!</description>
-    </item>
-    
-    <item>
       <title>Living off The Land Attacks : Application IoC Generator</title>
       <link>http://localhost:1313/p1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/p1/</guid>
       <description>Capstone Project</description>
+    </item>
+    
+    <item>
+      <title>Welp!! What Is This? Is It a software or virus/malware?</title>
+      <link>http://localhost:1313/blog/errorlog/winmal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/errorlog/winmal/</guid>
+      <description>Am I the only one wondering if this is legit software or malware? Turns out, 100 others and 15 Redditors are scratching their heads too!</description>
     </item>
     
     <item>
@@ -71,6 +80,15 @@
     </item>
     
     <item>
+      <title>Windows</title>
+      <link>http://localhost:1313/win.md/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/win.md/</guid>
+      <description>shit happens; windows gets better (?)</description>
+    </item>
+    
+    <item>
       <title>Security &amp; Resilience of Shipping Container Infrastructure in Maritime Trade</title>
       <link>http://localhost:1313/p4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -80,30 +98,12 @@
     </item>
     
     <item>
-      <title></title>
-      <link>http://localhost:1313/blog/reading/r1/</link>
+      <title>I&#39;m a tea-pot.</title>
+      <link>http://localhost:1313/blog/errorlog/project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/reading/r1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://localhost:1313/blog/reading/r2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/blog/reading/r2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://localhost:1313/blog/writeup/htb-unit42/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/blog/writeup/htb-unit42/</guid>
-      <description></description>
+      <guid>http://localhost:1313/blog/errorlog/project/</guid>
+      <description>spilling the tea!</description>
     </item>
     
   </channel>

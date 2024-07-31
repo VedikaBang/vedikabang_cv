@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Vedika Bang</title>
 <meta name="keywords" content="">
-<meta name="description" content=" - Vedika Bang">
+<meta name="description" content="Unit42 Write-up Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto&rsquo;s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. Pawned Unit42Reconnaissance We&rsquo;ve got sysmon logs.">
 <meta name="author" content="Vedika Bang">
 <link rel="canonical" href="http://localhost:1313/blog/writeup/htb-unit42/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.2f32515c4d3a0acbcf79054e0c940272cb47bbc4394215cd8256a6c6bb33c096.css" integrity="sha256-LzJRXE06CsvPeQVODJQCcstHu8Q5QhXNglamxrszwJY=" rel="preload stylesheet" as="style">
@@ -28,7 +28,7 @@
 
     </style>
 </noscript><meta property="og:title" content="" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Unit42 Write-up Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto&rsquo;s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. Pawned Unit42Reconnaissance We&rsquo;ve got sysmon logs." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/blog/writeup/htb-unit42/" /><meta property="article:section" content="blog" />
 
@@ -36,7 +36,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="Unit42 Write-up Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto&rsquo;s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. Pawned Unit42Reconnaissance We&rsquo;ve got sysmon logs."/>
 
 
 <script type="application/ld+json">
@@ -59,12 +59,12 @@
   "@type": "BlogPosting",
   "headline": "",
   "name": "",
-  "description": "",
+  "description": "Unit42 Write-up Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto\u0026rsquo;s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. Pawned Unit42\rReconnaissance We\u0026rsquo;ve got sysmon logs.",
   "keywords": [
     
   ],
-  "articleBody": "",
-  "wordCount" : "0",
+  "articleBody": "\rUnit42 Write-up Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto’s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. Pawned Unit42\rReconnaissance We’ve got sysmon logs. Sysmon Logs Sysmon: Often described as “Event Viewer on steroids,” Sysmon allows for extensive customization through its configuration file. This flexibility enables users to tailor Sysmon to their specific needs. It’s important to note that Sysmon does not provide analysis of the events it generates, nor does it attempt to hide itself from attackers. Sysmon Documentation\r. Sysmon is designed to run as a persistent service in the background, capturing and logging system events based on the configured rules. It logs detailed information about system activities, including process creations, network connections, file modifications, and more. Configuration Importance: The configuration file is crucial for effective use of Sysmon. During my initial use of Sysmon, I failed to see the needed information because my configuration was too permissive. With a well-defined configuration, you can specify which event IDs to log, ensuring that Sysmon captures the most relevant data. Sysmon itself does not analyze the events it logs. It functions purely as a data collection tool, requiring integration with other tools for event analysis and further interpretation. Task 1 Open Microsoft-Windows-Sysmon-Operational.evtx for a quick preview - and to group events and determine the frequency of each Event ID. Event ID Summary Event ID Occurrences Description 1 150 Process creation 2 30 File creation time changed 3 75 Network connection 5 60 Process terminated 7 60 Image loaded 10 75 ProcessAccess detected 11 30 File created 12 60 Registry object added or deleted 15 30 File created or overwritten 17 - Named pipe created 22 60 DNS query 23 150 File deleted (with archive attribute) 26 30 File deleted (without archive attribute) Task 2 Reading through .evtx files in windows Evtx is like trying to read a book with the pages out of order. I needed something more automated, sleek, and consistent. Log Parser 2.2? but this time, the output was so inconsistent I closed it faster than I opened it.\nBy using Evtx to convert .evtx files to JSON and then jq to manipulate and format the JSON data, I finally got the readable, consistent, and tailored log output I was looking for. This box helped me understand jq better.\nTask 3 Task 4 Task 5 Task 6 Task 7 Task 8 ",
+  "wordCount" : "444",
   "inLanguage": "en",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -215,6 +215,119 @@
 
 </div>
   </header> 
+  <div class="post-content"><div style="font-family: 'Times New Roman', serif; text-align: justify;">
+<h2 id="unit42">Unit42<a hidden class="anchor" aria-hidden="true" href="#unit42">#</a></h2>
+<h3 id="write-up">Write-up<a hidden class="anchor" aria-hidden="true" href="#write-up">#</a></h3>
+<blockquote>
+<p>Summary: In this Sherlock, you will familiarize yourself with Sysmon logs and various useful EventIDs for identifying and analyzing malicious activities on a Windows system. Palo Alto&rsquo;s Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign. <a href="https://app.hackthebox.com/sherlocks/Unit42" target="_blank">Pawned Unit42</a>
+</p>
+</blockquote>
+<h4 id="reconnaissance">Reconnaissance<a hidden class="anchor" aria-hidden="true" href="#reconnaissance">#</a></h4>
+<ul>
+<li>We&rsquo;ve got sysmon logs.</li>
+</ul>
+<h6 id="sysmon-logs">Sysmon Logs<a hidden class="anchor" aria-hidden="true" href="#sysmon-logs">#</a></h6>
+<ul>
+<li>Sysmon: Often described as &ldquo;Event Viewer on steroids,&rdquo; Sysmon allows for extensive customization through its configuration file. This flexibility enables users to tailor Sysmon to their specific needs. It&rsquo;s important to note that Sysmon does not provide analysis of the events it generates, nor does it attempt to hide itself from attackers. <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon" target="_blank">Sysmon Documentation</a>
+. Sysmon is designed to run as a persistent service in the background, capturing and logging system events based on the configured rules. It logs detailed information about system activities, including process creations, network connections, file modifications, and more.</li>
+<li>Configuration Importance: The configuration file is crucial for effective use of Sysmon. During my initial use of Sysmon, I failed to see the needed information because my configuration was too permissive. With a well-defined configuration, you can specify which event IDs to log, ensuring that Sysmon captures the most relevant data.</li>
+<li>Sysmon itself does not analyze the events it logs. It functions purely as a data collection tool, requiring integration with other tools for event analysis and further interpretation.</li>
+</ul>
+<h5 id="task-1">Task 1<a hidden class="anchor" aria-hidden="true" href="#task-1">#</a></h5>
+<ul>
+<li>Open <code>Microsoft-Windows-Sysmon-Operational.evtx</code> for a quick preview - and to group events and determine the frequency of each Event ID.
+<img loading="lazy" src="/unit42/task1.png" alt="Task1"  />
+</li>
+</ul>
+<h6 id="event-id-summary">Event ID Summary<a hidden class="anchor" aria-hidden="true" href="#event-id-summary">#</a></h6>
+<table>
+<thead>
+<tr>
+<th>Event ID</th>
+<th>Occurrences</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>150</td>
+<td>Process creation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>30</td>
+<td>File creation time changed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>75</td>
+<td>Network connection</td>
+</tr>
+<tr>
+<td>5</td>
+<td>60</td>
+<td>Process terminated</td>
+</tr>
+<tr>
+<td>7</td>
+<td>60</td>
+<td>Image loaded</td>
+</tr>
+<tr>
+<td>10</td>
+<td>75</td>
+<td>ProcessAccess detected</td>
+</tr>
+<tr>
+<td>11</td>
+<td>30</td>
+<td>File created</td>
+</tr>
+<tr>
+<td>12</td>
+<td>60</td>
+<td>Registry object added or deleted</td>
+</tr>
+<tr>
+<td>15</td>
+<td>30</td>
+<td>File created or overwritten</td>
+</tr>
+<tr>
+<td>17</td>
+<td>-</td>
+<td>Named pipe created</td>
+</tr>
+<tr>
+<td>22</td>
+<td>60</td>
+<td>DNS query</td>
+</tr>
+<tr>
+<td>23</td>
+<td>150</td>
+<td>File deleted (with archive attribute)</td>
+</tr>
+<tr>
+<td>26</td>
+<td>30</td>
+<td>File deleted (without archive attribute)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="task-2">Task 2<a hidden class="anchor" aria-hidden="true" href="#task-2">#</a></h5>
+<p>Reading through .evtx files in <code>windows Evtx</code> is like trying to read a book with the pages out of order. I needed something more automated, sleek, and consistent. Log Parser 2.2? but this time, the output was so inconsistent I closed it faster than I opened it.</p>
+<p>By using <code>Evtx</code> to convert .evtx files to JSON and then jq to manipulate and format the JSON data, I finally got the readable, consistent, and tailored log output I was looking for. This box helped me understand <code>jq</code> better.</p>
+<h5 id="task-3">Task 3<a hidden class="anchor" aria-hidden="true" href="#task-3">#</a></h5>
+<h5 id="task-4">Task 4<a hidden class="anchor" aria-hidden="true" href="#task-4">#</a></h5>
+<h5 id="task-5">Task 5<a hidden class="anchor" aria-hidden="true" href="#task-5">#</a></h5>
+<h5 id="task-6">Task 6<a hidden class="anchor" aria-hidden="true" href="#task-6">#</a></h5>
+<h5 id="task-7">Task 7<a hidden class="anchor" aria-hidden="true" href="#task-7">#</a></h5>
+<h5 id="task-8">Task 8<a hidden class="anchor" aria-hidden="true" href="#task-8">#</a></h5>
+
+
+  </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
