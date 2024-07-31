@@ -52,8 +52,6 @@
   </url><url>
     <loc>http://localhost:1313/experience/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/hello-windows/</loc>
-  </url><url>
     <loc>http://localhost:1313/blog/errorlog/project/</loc>
   </url><url>
     <loc>http://localhost:1313/blog/errorlog/</loc>
@@ -61,5 +59,7 @@
     <loc>http://localhost:1313/tags/project/</loc>
   </url><url>
     <loc>http://localhost:1313/projects/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/windows/</loc>
   </url>
 </urlset>
